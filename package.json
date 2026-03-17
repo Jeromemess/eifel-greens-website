@@ -1,0 +1,12 @@
+{
+  "name": "eifel-greens-website",
+  "version": "1.0.0",
+  "description": "Eifel Greens – Microgreens aus der Eifel",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
