@@ -225,21 +225,38 @@
           <span class="eyebrow">Direkt erreichbar</span>
           <h2 id="contact-info-heading">Kontaktdaten</h2>
         </div>
-        <div class="grid-3">
-          <div class="info-card reveal">
-            <div class="info-card-icon" aria-hidden="true">✉️</div>
+        <style>
+          .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+          .contact-card { background: #fff; border-radius: 1rem; padding: 2.5rem 1.5rem; text-align: center; box-shadow: 0 2px 16px rgba(45,90,39,.08); border-top: 3px solid var(--green); }
+          .contact-card-icon { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, rgba(112,160,32,.12), rgba(157,216,74,.07)); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; }
+          .contact-card-icon svg { width: 28px; height: 28px; stroke: var(--green); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+          .contact-card h3 { font-size: 1.1rem; color: var(--dark-green); margin-bottom: .5rem; }
+          .contact-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+          .contact-card a { color: var(--green); text-decoration: none; font-weight: 500; }
+          .contact-card a:hover { color: var(--dark-green); }
+          @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+        </style>
+        <div class="contact-grid">
+          <div class="contact-card reveal">
+            <div class="contact-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+            </div>
             <h3>E-Mail</h3>
-            <p><a href="mailto:info@eifelgreens.de">info@eifelgreens.de</a></p>
+            <p><a href="mailto:eifelgreens@outlook.de">eifelgreens@outlook.de</a></p>
           </div>
-          <div class="info-card reveal reveal-delay-1">
-            <div class="info-card-icon" aria-hidden="true">📍</div>
+          <div class="contact-card reveal reveal-delay-1">
+            <div class="contact-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <h3>Telefon</h3>
+            <p><a href="tel:+3204744 22070">04744 22 070</a></p>
+          </div>
+          <div class="contact-card reveal reveal-delay-2">
+            <div class="contact-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
             <h3>Standort</h3>
-            <p>Eifelregion, Deutschland</p>
-          </div>
-          <div class="info-card reveal reveal-delay-2">
-            <div class="info-card-icon" aria-hidden="true">🚚</div>
-            <h3>Lieferzeiten</h3>
-            <p>Wöchentliche Lieferung nach Absprache</p>
+            <p>Eifelregion, Belgien<br>Mürringen, Büllingen</p>
           </div>
         </div>
       </div>
