@@ -1,0 +1,396 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eifel Greens – Microgreens aus der Eifel</title>
+  <meta name="description" content="Microgreens aus der Eifel: lebende Trays für Restaurants, Packungen für Handel und Privat. Frisch, lokal, unbehandelt." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* Home – Info-Card Icon Overrides & Animationen */
+    .info-card { text-align: center; }
+    .info-card .info-card-icon {
+      width: auto !important; height: auto !important;
+      background: none !important; border: none !important;
+      box-shadow: none !important; border-radius: 0 !important;
+      margin-bottom: 1.2rem !important; justify-content: center !important;
+    }
+    .info-card .info-card-icon svg { width: 96px !important; height: 96px !important; stroke: none !important; display: block; margin: 0 auto; }
+    @keyframes idx-float  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+    @keyframes idx-pulse  { 0%,100%{opacity:.80;transform:scale(1)} 50%{opacity:1;transform:scale(1.15)} }
+    @keyframes idx-wave   { 0%,100%{opacity:.55;transform:translateX(0)} 50%{opacity:1;transform:translateX(3px)} }
+    .idx-float   { animation: idx-float 5s ease-in-out infinite; }
+    .idx-float-2 { animation: idx-float 5.5s ease-in-out infinite .6s; }
+    .idx-float-3 { animation: idx-float 6s ease-in-out infinite 1.2s; }
+    .idx-pulse-1 { animation: idx-pulse 2.4s ease-in-out infinite; }
+    .idx-pulse-2 { animation: idx-pulse 2.4s ease-in-out infinite .8s; }
+    .idx-pulse-3 { animation: idx-pulse 2.4s ease-in-out infinite 1.6s; }
+    .idx-wave-1  { animation: idx-wave 2.2s ease-in-out infinite; }
+    .idx-wave-2  { animation: idx-wave 2.2s ease-in-out infinite .4s; }
+    .idx-wave-3  { animation: idx-wave 2.2s ease-in-out infinite .8s; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Hauptinhalt springen</a>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Hauptnavigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="Eifel Greens Startseite">
+        <img src="images/logo.png" alt="eifel greens" class="nav-logo-img" />
+      </a>
+      <button class="nav-burger" id="navBurger" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="microgreens.html">Microgreens</a></li>
+        <li><a href="mixes.html">Unsere Mixes</a></li>
+        <li><a href="was-sind-microgreens.html">Was sind Microgreens?</a></li>
+        <li><a href="eifelgemuese.html">Eifelgemüse</a></li>
+        <li><a href="ueber-uns.html">Über uns</a></li>
+        <li><a href="kontakt.html" class="nav-cta">Kontakt</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" aria-label="Willkommen bei Eifel Greens">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-grid-lines" aria-hidden="true"></div>
+
+      <!-- Spotlight folgt der Maus -->
+      <div class="hero-cursor-spotlight" id="heroCursorSpotlight" aria-hidden="true"></div>
+
+      <!-- Großes Microgreen – folgt dem Mauspfeil mit Spring-Physik -->
+      <div class="hero-plant-wrap hero-anim-5" aria-hidden="true">
+        <div class="hero-plant-inner" id="heroPlantInner">
+          <svg viewBox="0 0 420 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Boden-Glühen -->
+            <ellipse cx="210" cy="540" rx="200" ry="14" fill="rgba(112,160,32,.18)"/>
+
+            <!-- Pflanze 1: ganz links, klein -->
+            <path d="M45,545 C45,510 43,475 40,430" stroke="#3A6E10" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+            <ellipse cx="24" cy="416" rx="26" ry="13" fill="#70A020" transform="rotate(-40 24 416)"/>
+            <ellipse cx="58" cy="418" rx="26" ry="13" fill="#5A8A18" transform="rotate(40 58 418)"/>
+
+            <!-- Pflanze 2: mittelgroß -->
+            <path d="M92,548 C93,500 91,445 87,375" stroke="#2E6008" stroke-width="3.2" stroke-linecap="round" fill="none"/>
+            <ellipse cx="66" cy="360" rx="30" ry="14" fill="#80B030" transform="rotate(-36 66 360)"/>
+            <ellipse cx="110" cy="362" rx="30" ry="14" fill="#70A020" transform="rotate(36 110 362)"/>
+
+            <!-- Pflanze 3: groß, links-mitte -->
+            <path d="M150,550 C151,488 149,408 144,305" stroke="#265A06" stroke-width="3.8" stroke-linecap="round" fill="none"/>
+            <ellipse cx="118" cy="288" rx="36" ry="17" fill="#9DD84A" transform="rotate(-32 118 288)"/>
+            <ellipse cx="178" cy="291" rx="36" ry="17" fill="#80B830" transform="rotate(32 178 291)"/>
+            <!-- Seitenblatt -->
+            <ellipse cx="144" cy="370" rx="22" ry="11" fill="#78B020" transform="rotate(-52 144 370)"/>
+            <ellipse cx="157" cy="365" rx="22" ry="11" fill="#90C840" transform="rotate(46 157 365)"/>
+
+            <!-- Pflanze 4: mittel, mitte -->
+            <path d="M202,549 C203,500 201,440 197,368" stroke="#305808" stroke-width="3.4" stroke-linecap="round" fill="none"/>
+            <ellipse cx="174" cy="352" rx="32" ry="15" fill="#70A020" transform="rotate(-34 174 352)"/>
+            <ellipse cx="224" cy="354" rx="32" ry="15" fill="#90C840" transform="rotate(34 224 354)"/>
+
+            <!-- Pflanze 5: HÖCHSTE, mitte-rechts – Hauptfokus -->
+            <path d="M258,551 C260,470 258,368 252,240" stroke="#1C5004" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+            <ellipse cx="222" cy="222" rx="42" ry="20" fill="#B0E050" transform="rotate(-30 222 222)"/>
+            <ellipse cx="290" cy="226" rx="42" ry="20" fill="#90C838" transform="rotate(30 290 226)"/>
+            <!-- Seitenblätter am Hauptstamm -->
+            <ellipse cx="252" cy="320" rx="25" ry="12" fill="#80B028" transform="rotate(-48 252 320)"/>
+            <ellipse cx="268" cy="314" rx="25" ry="12" fill="#A0D040" transform="rotate(44 268 314)"/>
+            <ellipse cx="254" cy="420" rx="20" ry="10" fill="#70A020" transform="rotate(-50 254 420)"/>
+            <ellipse cx="266" cy="415" rx="20" ry="10" fill="#88C030" transform="rotate(46 266 415)"/>
+
+            <!-- Pflanze 6: mittelgroß, rechts-mitte -->
+            <path d="M312,549 C313,498 311,435 307,345" stroke="#2A6008" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+            <ellipse cx="283" cy="329" rx="33" ry="15" fill="#80B030" transform="rotate(-33 283 329)"/>
+            <ellipse cx="336" cy="332" rx="33" ry="15" fill="#70A020" transform="rotate(33 336 332)"/>
+
+            <!-- Pflanze 7: kleiner, rechts -->
+            <path d="M360,547 C361,508 359,466 355,400" stroke="#3A7010" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+            <ellipse cx="335" cy="385" rx="27" ry="13" fill="#9DD84A" transform="rotate(-37 335 385)"/>
+            <ellipse cx="378" cy="387" rx="27" ry="13" fill="#70A020" transform="rotate(37 378 387)"/>
+
+            <!-- Pflanze 8: ganz rechts, kurz -->
+            <path d="M398,546 C398,518 397,485 395,450" stroke="#3A6E10" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+            <ellipse cx="380" cy="437" rx="22" ry="11" fill="#80B830" transform="rotate(-36 380 437)"/>
+            <ellipse cx="412" cy="439" rx="22" ry="11" fill="#70A020" transform="rotate(36 412 439)"/>
+
+            <!-- Zarte Tautropfen-Glanzpunkte auf den großen Blättern -->
+            <circle cx="234" cy="215" r="3.5" fill="rgba(255,255,255,.45)"/>
+            <circle cx="278" cy="220" r="2.5" fill="rgba(255,255,255,.35)"/>
+            <circle cx="120" cy="282" r="2.5" fill="rgba(255,255,255,.30)"/>
+          </svg>
+        </div>
+      </div>
+      <div class="container">
+        <div class="hero-content" style="text-align:center;max-width:720px;margin:0 auto;">
+          <p class="eyebrow hero-anim-1" style="justify-content:center;">Gewachsen in der Eifel</p>
+          <h1 class="hero-anim-2">Microgreens aus der Eifel<br><em>frisch, lokal, lecker.</em></h1>
+          <p class="hero-desc hero-anim-3">Jung geerntete Greens mit intensivem Aroma, für Restaurants, Handel und Zuhause. Wöchentlich frisch aus unserer Farm in der Eifel.</p>
+          <div class="btn-group hero-anim-4" style="justify-content:center;">
+            <a href="microgreens.html#restaurants" class="btn btn-primary">Für Restaurants</a>
+            <a href="microgreens.html#handel" class="btn btn-orange">Für Handel</a>
+            <a href="microgreens.html#privat" class="btn btn-teal">Für Privat</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WAS SIND MICROGREENS -->
+    <section class="section bg-white" aria-labelledby="micro-h">
+      <div class="container">
+        <div class="section-header center reveal">
+          <p class="eyebrow">Was sind Microgreens?</p>
+          <h2 id="micro-h">Klein. Aromatisch. Nährstoffreich.</h2>
+          <p class="lead">Microgreens sind junge Gemüsepflänzchen, die kurz nach dem Keimen geerntet werden. Sie bringen frisches Aroma, Farbe und einen besonderen Akzent in viele Gerichte.</p>
+        </div>
+        <div class="grid-3">
+          <div class="info-card reveal reveal-delay-1">
+            <div class="info-card-icon" aria-hidden="true"><svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" class="idx-float">
+              <defs><radialGradient id="idxb1" cx="40%" cy="90%" r="55%"><stop offset="0%" stop-color="#78C028" stop-opacity=".22"/><stop offset="100%" stop-color="#78C028" stop-opacity="0"/></radialGradient></defs>
+              <ellipse cx="42" cy="88" rx="26" ry="6" fill="url(#idxb1)"/>
+              <path d="M 40 84 C 40 72 39 58 38 44" stroke="#2D5A27" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M 38 66 C 28 56 16 50 8 42 C 18 48 28 56 38 66Z" fill="#2D5A27"/>
+              <path d="M 39 54 C 49 46 58 40 68 32 C 58 39 48 46 39 54Z" fill="#3A7010"/>
+              <path d="M 38 44 C 32 32 32 18 36 8 C 38 18 39 32 38 44Z" fill="#4A8818"/>
+              <path d="M 38 44 C 44 32 44 18 40 8 C 38 18 37 32 38 44Z" fill="#78C028"/>
+              <path d="M 38 36 C 48 29 56 23 64 16 C 55 23 46 30 38 36Z" fill="#509018"/>
+              <path d="M 60 58 C 62 52 60 46 62 40 C 64 34 62 28 64 22" stroke="#9DD84A" stroke-width="2.2" stroke-linecap="round" fill="none" class="idx-wave-1"/>
+              <path d="M 68 52 C 70 46 68 40 70 34 C 72 28 70 22 72 16" stroke="#78C028" stroke-width="1.7" stroke-linecap="round" fill="none" class="idx-wave-2"/>
+              <path d="M 76 46 C 78 40 76 34 78 28 C 80 22 78 16 80 10" stroke="#9DD84A" stroke-width="1.3" stroke-linecap="round" fill="none" class="idx-wave-3"/>
+              <circle cx="66" cy="14" r="3.5" fill="#F5C518" class="idx-pulse-1"/>
+              <circle cx="78" cy="8" r="2.8" fill="#F5C518" class="idx-pulse-2"/>
+              <circle cx="58" cy="10" r="2.2" fill="#FF8040" class="idx-pulse-3"/>
+              <path d="M 82 20 L 83.5 23.5 L 87 23.5 L 84.3 25.8 L 85.5 29 L 82 27 L 78.5 29 L 79.7 25.8 L 77 23.5 L 80.5 23.5 Z" fill="#F5C518" opacity=".85" class="idx-pulse-1"/>
+              <circle cx="18" cy="50" r="2.2" fill="rgba(255,255,255,.55)"/>
+            </svg></div>
+            <h3>Intensives Aroma</h3>
+            <p>Trotz kleiner Größe entfalten sie ein kraftvolles Geschmacksprofil, ideal als Finish für jedes Gericht.</p>
+          </div>
+          <div class="info-card reveal reveal-delay-2">
+            <div class="info-card-icon" aria-hidden="true"><svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" class="idx-float-2">
+              <defs><radialGradient id="idxb2" cx="50%" cy="50%" r="52%"><stop offset="0%" stop-color="#9DD84A" stop-opacity=".16"/><stop offset="100%" stop-color="#9DD84A" stop-opacity="0"/></radialGradient></defs>
+              <circle cx="48" cy="48" r="32" fill="url(#idxb2)"/>
+              <path d="M 70 26 A 30 30 0 1 1 26 26" stroke="#3A7010" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+              <path d="M 26 26 L 16 20 L 20 32Z" fill="#3A7010"/>
+              <path d="M 48 74 C 48 64 47 54 46 44" stroke="#2D5A27" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M 46 62 C 38 54 28 50 20 44 C 28 50 38 55 46 62Z" fill="#4A8818"/>
+              <path d="M 47 52 C 55 44 63 40 70 33 C 62 40 54 46 47 52Z" fill="#509018"/>
+              <path d="M 46 44 C 42 34 42 22 46 14 C 48 22 48 34 46 44Z" fill="#509018"/>
+              <path d="M 46 44 C 50 34 50 22 46 14 C 44 22 44 34 46 44Z" fill="#78C028"/>
+              <circle cx="80" cy="26" r="5" fill="#9DD84A" class="idx-pulse-1"/>
+              <circle cx="80" cy="26" r="2.5" fill="#78C028"/>
+            </svg></div>
+            <h3>Wöchentlich frisch</h3>
+            <p>Jede Woche frisch aus unserer Farm in der Eifel, ohne langen Transportweg.</p>
+          </div>
+          <div class="info-card reveal reveal-delay-3">
+            <div class="info-card-icon" aria-hidden="true"><svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" class="idx-float-3">
+              <defs><radialGradient id="idxb3" cx="50%" cy="70%" r="52%"><stop offset="0%" stop-color="#78C028" stop-opacity=".16"/><stop offset="100%" stop-color="#78C028" stop-opacity="0"/></radialGradient></defs>
+              <ellipse cx="48" cy="64" rx="32" ry="8" fill="rgba(242,238,230,.92)" stroke="#3A7010" stroke-width="2"/>
+              <path d="M 16 64 C 16 78 30 86 48 86 C 66 86 80 78 80 64Z" fill="rgba(248,245,240,.95)" stroke="#3A7010" stroke-width="2"/>
+              <ellipse cx="48" cy="64" rx="28" ry="6.5" fill="rgba(252,250,246,.65)"/>
+              <path d="M 48 64 C 48 54 47 44 46 34" stroke="#2D5A27" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M 46 52 C 38 44 27 39 18 32 C 27 39 37 44 46 52Z" fill="#3A7010"/>
+              <path d="M 47 42 C 55 34 64 29 73 22 C 63 29 54 35 47 42Z" fill="#4A8818"/>
+              <path d="M 46 34 C 43 24 43 14 46 6 C 48 14 48 24 46 34Z" fill="#509018"/>
+              <path d="M 46 34 C 49 24 49 14 46 6 C 44 14 44 24 46 34Z" fill="#78C028"/>
+              <path d="M 32 63 C 32 55 31 46 30 38" stroke="#1E5204" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M 30 52 C 23 46 15 42 8 36 C 16 42 23 47 30 52Z" fill="#4A8818"/>
+              <path d="M 30 38 C 28 30 28 21 30 14 C 31 21 31 30 30 38Z" fill="#509018"/>
+              <path d="M 30 38 C 32 30 32 21 30 14 C 29 21 29 30 30 38Z" fill="#9DD84A"/>
+              <path d="M 64 63 C 64 55 64 46 64 38" stroke="#1E5204" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M 64 52 C 72 45 80 42 88 36 C 80 42 72 46 64 52Z" fill="#3A7010"/>
+              <path d="M 64 38 C 62 30 62 21 64 14 C 65 21 65 30 64 38Z" fill="#509018"/>
+              <path d="M 64 38 C 66 30 66 21 64 14 C 63 21 63 30 64 38Z" fill="#78C028"/>
+              <circle cx="26" cy="48" r="2" fill="rgba(255,255,255,.52)"/>
+              <circle cx="68" cy="40" r="1.8" fill="rgba(255,255,255,.45)"/>
+            </svg></div>
+            <h3>Einfach zu verwenden</h3>
+            <p>Einfach über Salate, Suppen oder Bowls: Microgreens passen zu fast jedem Gericht.</p>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:2.5rem;" class="reveal reveal-delay-4">
+          <a href="was-sind-microgreens.html" class="btn btn-outline">Mehr erfahren</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIE 3 MIXES -->
+    <section class="section bg-cream" aria-labelledby="mixes-h">
+      <div class="container">
+        <div class="section-header center reveal">
+          <p class="eyebrow">Unsere Produkte</p>
+          <h2 id="mixes-h">Die drei Mixes</h2>
+          <p class="lead">Drei sorgfältig zusammengestellte Mischungen für jeden Anlass und Geschmack.</p>
+        </div>
+        <div class="grid-3">
+          <article class="mix-card reveal reveal-delay-1">
+            <div class="mix-band aroma">
+              <div class="mix-band-left"><div class="mix-band-title">Aroma Mix</div><div class="mix-band-sub">Würzig · Pfeffrig · Frisch</div></div>
+            </div>
+            <div class="mix-body">
+              <p class="mix-desc">Drei Sorten Radieschen-Microgreens vereinen sich zu einem lebhaften, würzigen Mix, ideal als Finish für viele Gerichte.</p>
+              <div class="mix-tags"><span class="mix-tag">Bowls</span><span class="mix-tag">Sandwiches</span><span class="mix-tag">Carpaccio</span><span class="mix-tag">Salate</span></div>
+              <div class="mix-ingredients"><span class="mix-ingredients-label">Zutaten</span>Radieschen Grün, Pink, Violett</div>
+              <div class="mix-btn"><a href="mixes.html#aroma" class="btn btn-primary btn-sm">Aroma Mix entdecken</a></div>
+            </div>
+          </article>
+          <article class="mix-card reveal reveal-delay-2">
+            <div class="mix-band gourmet">
+              <div class="mix-band-left"><div class="mix-band-title">Gourmet Mix</div><div class="mix-band-sub">Fein · Elegant · Komplex</div></div>
+            </div>
+            <div class="mix-body">
+              <p class="mix-desc">Rucola, Rotkohl, Kohlrabi und Brunnenkresse, eine raffinierte Komposition für die anspruchsvolle Küche.</p>
+              <div class="mix-tags"><span class="mix-tag">Fine Dining</span><span class="mix-tag">Tartare</span><span class="mix-tag">Lachs</span><span class="mix-tag">Steak</span></div>
+              <div class="mix-ingredients"><span class="mix-ingredients-label">Zutaten</span>Rucola, Rotkohl, Kohlrabi, Brunnenkresse</div>
+              <div class="mix-btn"><a href="mixes.html#gourmet" class="btn btn-orange btn-sm">Gourmet Mix entdecken</a></div>
+            </div>
+          </article>
+          <article class="mix-card reveal reveal-delay-3">
+            <div class="mix-band vital">
+              <div class="mix-band-left"><div class="mix-band-title">Vital Mix</div><div class="mix-band-sub">Kraftvoll · Nährstoffreich</div></div>
+            </div>
+            <div class="mix-body">
+              <p class="mix-desc">Unser reichhaltigster Mix: Radieschen, Erbsen, Sonnenblumen, Amaranth, Brokkoli und Kapuzinerkresse.</p>
+              <div class="mix-tags"><span class="mix-tag">Bowls</span><span class="mix-tag">Smoothies</span><span class="mix-tag">Frühstück</span><span class="mix-tag">Wraps</span></div>
+              <div class="mix-ingredients"><span class="mix-ingredients-label">Zutaten</span>Radieschen, Erbsen, Sonnenblume, Amaranth, Brokkoli, Kapuziner</div>
+              <div class="mix-btn"><a href="mixes.html#vital" class="btn btn-teal btn-sm">Vital Mix entdecken</a></div>
+            </div>
+          </article>
+        </div>
+        <div style="text-align:center;margin-top:2.5rem;" class="reveal reveal-delay-4">
+          <a href="mixes.html" class="btn btn-dark">Alle Mixes entdecken</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WIE KAUFEN -->
+    <section class="section bg-white" aria-labelledby="buy-h">
+      <div class="container">
+        <div class="section-header center reveal">
+          <p class="eyebrow">Wie bestellen?</p>
+          <h2 id="buy-h">Für jeden den richtigen Weg</h2>
+          <p class="lead">Ob Profiküche, Einzelhandel oder Zuhause: wir liefern das Richtige.</p>
+        </div>
+        <div class="grid-3 buy-grid">
+          <div class="buy-card reveal reveal-delay-1" style="background:#f2f8ea;border-top:3px solid var(--green);">
+            <span class="buy-card-tag" style="color:var(--green-dark);font-size:0.95rem;font-weight:700;">Restaurants &amp; Gastronomie</span>
+            <h3 style="font-size:1.5rem;color:var(--green-dark);">Lebende Trays</h3>
+            <p style="font-size:1rem;line-height:1.7;">1010 und 1020 Trays direkt in Ihre Küche. Maximale Frische, schneiden Sie nach Bedarf.</p>
+            <a href="microgreens.html#restaurants" class="btn btn-primary btn-sm">Mehr erfahren</a>
+          </div>
+          <div class="buy-card reveal reveal-delay-2" style="background:#fdf6ec;border-top:3px solid var(--orange);">
+            <span class="buy-card-tag" style="color:var(--orange-dark);font-size:0.95rem;font-weight:700;">Handel &amp; Supermärkte</span>
+            <h3 style="font-size:1.5rem;color:var(--orange-dark);">Fertig verpackt</h3>
+            <p style="font-size:1rem;line-height:1.7;">Sauber etikettiert und verkaufsfertig, ideal für Bio-Läden, Hofläden und Supermärkte.</p>
+            <a href="microgreens.html#handel" class="btn btn-orange btn-sm">Mehr erfahren</a>
+          </div>
+          <div class="buy-card reveal reveal-delay-3" style="background:#edf7f7;border-top:3px solid var(--teal);">
+            <span class="buy-card-tag" style="color:var(--teal-dark);font-size:0.95rem;font-weight:700;">Privatkunden</span>
+            <h3 style="font-size:1.5rem;color:var(--teal-dark);">Für zuhause</h3>
+            <p style="font-size:1rem;line-height:1.7;">Unsere drei Mixes in handlichen Packungsgrößen, einfach bestellen und genießen.</p>
+            <a href="microgreens.html#privat" class="btn btn-teal btn-sm">Mehr erfahren</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EIFELGEMÜSE TEASER -->
+    <section class="section bg-green-soft" aria-labelledby="gemuese-h">
+      <div class="container">
+        <div class="split-layout">
+          <div class="split-visual reveal">
+            <img src="images/Garten 1.jpeg" alt="Frischer Garten in der Eifel – saisonales Gemüse direkt vom Feld" loading="lazy" />
+          </div>
+          <div class="reveal reveal-delay-2">
+            <p class="eyebrow">Frisch aus dem Eifelgarten</p>
+            <h2 id="gemuese-h">Eifelgemüse: saisonal aus unserem Garten</h2>
+            <p style="color:var(--text-muted);line-height:1.75;margin:1rem 0 1.5rem;">Saisonal verfügbares Gemüse direkt aus unserem Garten in der Eifel. Jede Woche ein frisches Angebot, bestellen Sie bequem über unsere Web-App und holen Sie donnerstags ab.</p>
+            <div class="btn-group">
+              <a href="eifelgemuese.html" class="btn btn-primary">Mehr erfahren</a>
+              <a href="#" class="btn btn-outline">Zur Web-App</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST -->
+    <section class="trust-section" aria-labelledby="trust-h">
+      <div class="container">
+        <div class="section-header center reveal" style="margin-bottom:var(--sp-16);">
+          <p class="eyebrow">Unsere Versprechen</p>
+          <h2 id="trust-h">Regional. Sorgfältig. Unbehandelt.</h2>
+        </div>
+        <div class="trust-grid">
+          <div class="reveal reveal-delay-1">
+            <div class="trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+            <h3>Anbau in der Eifel</h3>
+            <p>Alle Microgreens wachsen bei uns in der Eifelregion, kurze Wege, frische Qualität.</p>
+          </div>
+          <div class="reveal reveal-delay-2">
+            <div class="trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <h3>Wöchentliche Ernte</h3>
+            <p>Regelmäßige Lieferungen direkt nach der Ernte, immer frisch auf Ihrem Tisch.</p>
+          </div>
+          <div class="reveal reveal-delay-3">
+            <div class="trust-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <h3>Sorgfältig &amp; unbehandelt</h3>
+            <p>Kein Einsatz von Pestiziden. Wir arbeiten mit Bio-Saatgut und Bio-Erde, natürlich angebaut und sorgfältig verarbeitet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-sm bg-white" style="border-top:1px solid var(--cream-dark);">
+      <div class="container" style="text-align:center;"><div class="reveal">
+        <p class="eyebrow" style="justify-content:center;">Interesse geweckt?</p>
+        <h2 style="margin-bottom:1rem;">Jetzt Kontakt aufnehmen</h2>
+        <p style="color:var(--text-muted);max-width:480px;margin:0 auto 2rem;">Für Anfragen von Restaurants, Handel oder Privatkunden, wir freuen uns auf Ihre Nachricht.</p>
+        <a href="kontakt.html" class="btn btn-primary">Nachricht senden</a>
+      </div></div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="images/logo.png" alt="eifel greens" class="footer-logo-img" />
+          <p class="footer-desc">Frisch geerntete Microgreens aus der Eifel, für Restaurants, Handel und Zuhause.</p>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-title">Navigation</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="microgreens.html">Microgreens</a></li>
+            <li><a href="mixes.html">Unsere Mixes</a></li>
+            <li><a href="was-sind-microgreens.html">Was sind Microgreens?</a></li>
+            <li><a href="eifelgemuese.html">Eifelgemüse</a></li>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-title">Kontakt</h3>
+          <address>Eifel Greens<br>Jérôme Messerich<br>Eifelregion, Belgien<br><br><a href="mailto:eifelgreens@outlook.de">eifelgreens@outlook.de</a></address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Eifel Greens · Jérôme Messerich · Eifelregion, Belgien</p>
+        <p><a href="impressum.html" style="color:inherit;text-decoration:none;opacity:.7;">Impressum</a> · <a href="agb.html" style="color:inherit;text-decoration:none;opacity:.7;">AGB</a> · <a href="datenschutz.html" style="color:inherit;text-decoration:none;opacity:.7;">Datenschutz</a></p>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,519 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eifelgemüse – Saisonales aus unserem Garten | Eifel Greens</title>
+  <meta name="description" content="Saisonales Gemüse aus der Eifel. Wöchentlich frisches Angebot – jetzt über unsere Web-App bestellen und donnerstags abholen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* Info-Card SVG Icons */
+    .info-card-icon { width: auto !important; height: auto !important; background: none !important; border: none !important; display: block !important; margin-bottom: 1.5rem !important; }
+    .info-card-icon svg { width: 96px !important; height: 96px !important; display: block; margin: 0 auto; }
+
+    /* WhatsApp-Verteiler Section */
+    .whatsapp-signup {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 820px;
+      margin: 2.5rem auto 0;
+    }
+    .whatsapp-qr { text-align: center; }
+    .whatsapp-qr p { margin-top: 0.75rem; font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
+    .qr-placeholder {
+      width: 148px; height: 148px;
+      border: 2px dashed #ccc;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 0.4rem;
+      background: #f9f9f7;
+      color: #aaa; font-size: 0.78rem; text-align: center; padding: 1rem;
+      line-height: 1.4;
+    }
+    .qr-placeholder svg { width: 36px; height: 36px; stroke: #bbb; stroke-width: 1.5; fill: none; margin-bottom: 4px; }
+    .whatsapp-divider { font-size: 1rem; color: var(--text-muted); font-weight: 600; flex-shrink: 0; }
+    .whatsapp-info { max-width: 380px; }
+    .whatsapp-info p { color: var(--text); line-height: 1.7; }
+    .btn-whatsapp {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      margin-top: 1.5rem;
+      background: #25D366; color: #fff;
+      border-radius: var(--r-full);
+      padding: 0.75rem 1.8rem;
+      font-weight: 600; font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-whatsapp:hover { background: #1aaf58; transform: translateY(-1px); }
+    .btn-whatsapp svg { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
+
+    /* Info-Card Icon Animationen */
+    @keyframes ei-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+    @keyframes ei-spin  { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    @keyframes ei-sway  { 0%,100%{transform:rotate(0deg)} 30%{transform:rotate(-3deg)} 70%{transform:rotate(3deg)} }
+    .icon-seasonal { animation: ei-float 3.5s ease-in-out infinite; }
+    .icon-weekly   { animation: ei-spin  9s linear infinite; transform-origin: 40px 40px; }
+    .icon-thursday { animation: ei-sway  4s ease-in-out infinite; transform-origin: 40px 58px; }
+    .info-card { text-align: center; }
+    /* So einfach geht's – Abstände & Zentrierung */
+    #how-heading { margin-bottom: 1.8rem; }
+    .step-num { line-height: 1 !important; display: flex !important; align-items: center !important; justify-content: center !important; }
+
+    /* Linke Gemüse-Dekoration im Hero */
+    .page-hero-plant-left {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: clamp(200px, 26vw, 380px);
+      height: clamp(260px, 36vw, 520px);
+      pointer-events: none;
+      z-index: 3;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+    @keyframes pageHeroSwayLeft {
+      0%, 100% { transform: rotate(0deg) translateY(0); }
+      35%       { transform: rotate(-1deg) translateY(-5px); }
+      70%       { transform: rotate(0.4deg) translateY(-2px); }
+    }
+    .page-hero-svg-left {
+      width: 100%;
+      height: 100%;
+      display: block;
+      filter: drop-shadow(0 30px 55px rgba(0,40,8,.45));
+      animation: pageHeroSwayLeft 9s ease-in-out infinite;
+      transform-origin: center bottom;
+    }
+    @media (max-width: 1024px) {
+      .page-hero-plant-left { width: 34vw; opacity: 0.75; }
+    }
+    @media (max-width: 768px) {
+      .page-hero-plant-left { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Hauptinhalt springen</a>
+
+  <nav class="nav" id="nav" role="navigation" aria-label="Hauptnavigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="Eifel Greens Startseite">
+        <img src="images/logo.png" alt="eifel greens" class="nav-logo-img" />
+      </a>
+      <button class="nav-burger" id="navBurger" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="microgreens.html">Microgreens</a></li>
+        <li><a href="mixes.html">Unsere Mixes</a></li>
+        <li><a href="was-sind-microgreens.html">Was sind Microgreens?</a></li>
+        <li><a href="eifelgemuese.html">Eifelgemüse</a></li>
+        <li><a href="ueber-uns.html">Über uns</a></li>
+        <li><a href="kontakt.html" class="nav-cta">Kontakt</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="page-hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <p class="eyebrow">Saisonal &amp; Regional</p>
+        <h1 id="hero-heading">Eifelgemüse – saisonal aus unserem Garten</h1>
+        <p class="lead">Frisch saisonal verfügbares Gemüse direkt aus unserem Garten in Mürringen. Jede Woche ein neues Angebot.</p>
+      </div>
+      <div class="page-hero-plant-left" aria-hidden="true">
+        <svg viewBox="0 0 300 440" fill="none" xmlns="http://www.w3.org/2000/svg" class="page-hero-svg-left">
+          <defs>
+            <radialGradient id="crt-rg" cx="30%" cy="25%" r="72%">
+              <stop offset="0%" stop-color="#FFB050"/>
+              <stop offset="100%" stop-color="#C84400"/>
+            </radialGradient>
+          </defs>
+
+          <!-- Boden-Glühen -->
+          <ellipse cx="150" cy="432" rx="140" ry="11" fill="rgba(112,160,32,.16)"/>
+
+          <!-- ═══ KAROTTE (links, x~63) ═══ -->
+          <!-- Rüben-Körper: oranger Kegel, ins Erdreich getaucht -->
+          <path d="M 54 416 C 52 424 51 434 53 444 C 55 452 59 457 63 458 C 67 457 71 452 71 442 C 72 432 70 420 67 415 C 63 412 57 413 54 416Z" fill="url(#crt-rg)"/>
+          <!-- Highlight-Streifen links -->
+          <path d="M 57 418 C 56 428 56 438 58 446 C 60 454 62 457 63 458 C 60 455 58 448 57 438 C 56 430 56 422 57 418Z" fill="#FFD090" opacity=".38"/>
+          <!-- Textur-Ringe (charakteristische Karottenrillen) -->
+          <path d="M 53 425 Q 62 423 71 425" stroke="rgba(150,45,0,.30)" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+          <path d="M 52 433 Q 62 431 72 433" stroke="rgba(150,45,0,.28)" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+          <path d="M 52 441 Q 62 439 71 441" stroke="rgba(150,45,0,.24)" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+          <!-- Kleine Seitenwurzel -->
+          <path d="M 69 438 C 78 440 84 439 88 442" stroke="#A83800" stroke-width="1.4" stroke-linecap="round" opacity=".50"/>
+
+          <!-- Karottengrün – Stiel 1 (links, schwingt nach links) -->
+          <path d="M 58 416 C 53 398 47 376 41 350" stroke="#2D6008" stroke-width="2.2" stroke-linecap="round"/>
+          <!-- Federige Blättchen Stiel 1 -->
+          <path d="M 50 392 C 39 382 26 376 14 366 C 26 372 39 380 50 392Z" fill="#4A8818"/>
+          <path d="M 47 377 C 35 366 22 358 11 347 C 24 354 37 363 47 377Z" fill="#5A9A20"/>
+          <path d="M 44 362 C 32 350 20 342 10 331 C 23 339 36 349 44 362Z" fill="#3E7A14"/>
+          <path d="M 41 350 C 35 338 33 323 35 311 C 37 323 39 337 41 350Z" fill="#4A8818"/>
+          <path d="M 41 350 C 47 338 49 323 47 311 C 45 323 43 337 41 350Z" fill="#78C028"/>
+
+          <!-- Stiel 2 (mitte, aufrecht) -->
+          <path d="M 63 415 C 62 394 61 370 60 342" stroke="#1E5A04" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M 61 388 C 71 376 84 367 96 355 C 83 362 70 374 61 388Z" fill="#60A020"/>
+          <path d="M 61 368 C 71 356 84 347 96 335 C 83 342 70 355 61 368Z" fill="#80B828"/>
+          <path d="M 60 342 C 54 328 52 312 54 298 C 56 312 58 328 60 342Z" fill="#3A7010"/>
+          <path d="M 60 342 C 66 328 68 312 66 298 C 64 312 62 328 60 342Z" fill="#9DD84A"/>
+
+          <!-- Stiel 3 (rechts, schwenkt rechts) -->
+          <path d="M 67 415 C 70 395 73 371 76 343" stroke="#2A6008" stroke-width="2" stroke-linecap="round"/>
+          <path d="M 72 387 C 83 377 96 370 108 360 C 95 367 82 376 72 387Z" fill="#58A018"/>
+          <path d="M 74 366 C 85 356 98 349 110 340 C 97 347 84 357 74 366Z" fill="#70B020"/>
+          <path d="M 76 343 C 82 329 84 314 82 302 C 80 314 78 329 76 343Z" fill="#4A8A18"/>
+          <!-- Extra kleine Blättchen (typisch für Karottengrün) -->
+          <path d="M 44 362 C 33 355 20 351 10 344 C 23 349 36 355 44 362Z" fill="#6AAA28" opacity=".82"/>
+          <path d="M 47 377 C 37 371 24 369 13 362 C 26 367 39 371 47 377Z" fill="#78B828" opacity=".76"/>
+
+          <!-- Tautropfen Karotte -->
+          <circle cx="38" cy="360" r="2.2" fill="rgba(255,255,255,.52)"/>
+          <circle cx="82" cy="364" r="1.8" fill="rgba(255,255,255,.42)"/>
+
+
+          <!-- ═══ KOPFSALAT (mitte, x~150) ═══ -->
+          <!-- Boden-Sockel & kurzer Strunk -->
+          <ellipse cx="150" cy="426" rx="20" ry="5" fill="rgba(139,100,40,.28)"/>
+          <path d="M 143 424 C 142 420 142 416 143 414 C 146 412 154 412 157 414 C 158 416 158 420 157 424Z" fill="#2D5A10"/>
+
+          <!-- HINTERSTE SILHOUETTE (dunkelster Schatten, gibt Rundung) -->
+          <path d="M 148 422 C 126 410 98 390 86 362 C 88 368 96 384 118 404 C 130 412 140 418 148 422Z" fill="#1A4606"/>
+          <path d="M 152 422 C 174 410 202 390 214 362 C 212 368 204 384 182 404 C 170 412 160 418 152 422Z" fill="#164008"/>
+
+          <!-- ÄUSSERE BLÄTTER – fächern weit aus, Spitzen hängen leicht -->
+          <!-- Links 1 -->
+          <path d="M 147 420 C 122 408 96 386 84 358 C 88 365 96 380 120 402 C 129 408 139 416 147 420Z" fill="#2D6210"/>
+          <!-- Rechts 1 -->
+          <path d="M 153 420 C 178 408 204 386 216 358 C 212 365 204 380 180 402 C 171 408 161 416 153 420Z" fill="#285C0E"/>
+          <!-- Links 2 (leicht heller) -->
+          <path d="M 146 418 C 120 404 96 382 86 352 C 92 360 102 378 126 400 C 133 407 140 414 146 418Z" fill="#367212"/>
+          <!-- Rechts 2 -->
+          <path d="M 154 418 C 180 404 204 382 214 352 C 208 360 198 378 174 400 C 167 407 160 414 154 418Z" fill="#306A10"/>
+
+          <!-- MITTLERE BLÄTTER – weniger Öffnung, Kuppel formt sich -->
+          <!-- Links -->
+          <path d="M 145 416 C 122 402 104 380 100 356 C 106 366 116 386 138 408 C 141 411 143 414 145 416Z" fill="#448A18"/>
+          <!-- Rechts -->
+          <path d="M 155 416 C 178 402 196 380 200 356 C 194 366 184 386 162 408 C 159 411 157 414 155 416Z" fill="#3E8014"/>
+          <!-- Links 2 -->
+          <path d="M 144 413 C 126 398 112 376 112 354 C 117 364 124 384 138 408 C 140 409 143 411 144 413Z" fill="#509820"/>
+          <!-- Rechts 2 -->
+          <path d="M 156 413 C 174 398 188 376 188 354 C 183 364 176 384 162 408 C 160 409 157 411 156 413Z" fill="#489018"/>
+
+          <!-- INNERE BLÄTTER – aufrechter, deutlich heller -->
+          <path d="M 144 409 C 132 394 126 374 128 352 C 132 364 136 384 144 409Z" fill="#60A820"/>
+          <path d="M 156 409 C 168 394 174 374 172 352 C 168 364 164 384 156 409Z" fill="#58A018"/>
+
+          <!-- HERZ-KUPPEL – hellstes Grün, ganz innen -->
+          <path d="M 150 405 C 142 388 140 368 142 350 C 145 364 147 384 150 405Z" fill="#78B828"/>
+          <path d="M 150 405 C 158 388 160 368 158 350 C 155 364 153 384 150 405Z" fill="#9DD84A"/>
+          <!-- Innerste zarte Herzblätter (hellgelb-grün) -->
+          <path d="M 149 398 C 144 382 143 366 145 352 C 147 365 148 381 149 398Z" fill="#A8E040"/>
+          <path d="M 151 398 C 156 382 157 366 155 352 C 153 365 152 381 151 398Z" fill="#C0F058" opacity=".88"/>
+
+          <!-- Blattadern (ganz dezent) -->
+          <path d="M 104 374 C 120 392 136 410 146 420" stroke="rgba(20,80,8,.20)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <path d="M 196 374 C 180 392 164 410 154 420" stroke="rgba(20,80,8,.20)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+
+          <!-- Tautropfen Salat -->
+          <circle cx="104" cy="378" r="2.5" fill="rgba(255,255,255,.52)"/>
+          <circle cx="196" cy="374" r="2.2" fill="rgba(255,255,255,.44)"/>
+          <circle cx="150" cy="352" r="2" fill="rgba(255,255,255,.48)"/>
+          <circle cx="128" cy="400" r="1.8" fill="rgba(255,255,255,.36)"/>
+
+
+          <!-- ═══ STANGENBOHNE (rechts, x~228) ═══ -->
+          <!-- Hauptstamm -->
+          <path d="M 230 435 C 231 408 229 374 226 336 C 223 298 221 258 219 218 C 218 188 217 158 216 130" stroke="#1E5204" stroke-width="3.2" stroke-linecap="round"/>
+          <!-- Blattpaare -->
+          <ellipse cx="206" cy="352" rx="27" ry="12" fill="#70A020" transform="rotate(-40 206 352)"/>
+          <ellipse cx="250" cy="348" rx="27" ry="12" fill="#5A9018" transform="rotate(37 250 348)"/>
+          <ellipse cx="209" cy="284" rx="25" ry="11" fill="#80B030" transform="rotate(-38 209 284)"/>
+          <ellipse cx="247" cy="280" rx="25" ry="11" fill="#6AA020" transform="rotate(36 247 280)"/>
+          <ellipse cx="211" cy="218" rx="22" ry="10" fill="#9DD84A" transform="rotate(-35 211 218)"/>
+          <ellipse cx="245" cy="215" rx="22" ry="10" fill="#70A820" transform="rotate(34 245 215)"/>
+          <ellipse cx="213" cy="158" rx="18" ry="8" fill="#80B828" transform="rotate(-32 213 158)"/>
+          <ellipse cx="240" cy="155" rx="18" ry="8" fill="#9DD84A" transform="rotate(31 240 155)"/>
+          <!-- Bohnen-Schote 1 -->
+          <path d="M 222 324 C 217 310 217 296 221 285" stroke="#78C028" stroke-width="5" stroke-linecap="round" fill="none"/>
+          <path d="M 222 324 C 227 310 227 296 223 285" stroke="#60A020" stroke-width="3" stroke-linecap="round" fill="none" opacity=".55"/>
+          <circle cx="219" cy="318" r="3" fill="#90C830" opacity=".60"/>
+          <circle cx="220" cy="307" r="3" fill="#90C830" opacity=".58"/>
+          <circle cx="221" cy="295" r="3" fill="#90C830" opacity=".55"/>
+          <!-- Bohnen-Schote 2 -->
+          <path d="M 224 258 C 219 246 220 234 224 224" stroke="#88C830" stroke-width="5" stroke-linecap="round" fill="none"/>
+          <path d="M 224 258 C 229 246 229 234 225 224" stroke="#68A828" stroke-width="3" stroke-linecap="round" fill="none" opacity=".55"/>
+          <circle cx="221" cy="252" r="3" fill="#98D038" opacity=".58"/>
+          <circle cx="222" cy="241" r="3" fill="#98D038" opacity=".55"/>
+          <!-- Ranken -->
+          <path d="M 216 130 C 224 120 232 108 226 98" stroke="#3A7010" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M 226 98 C 236 89 242 100 234 105" stroke="#3A7010" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          <path d="M 218 175 C 230 164 238 154 231 144" stroke="#4A8A18" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          <path d="M 231 144 C 240 136 245 146 237 151" stroke="#4A8A18" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div class="page-hero-plant" aria-hidden="true"><svg viewBox="0 0 300 440" fill="none" xmlns="http://www.w3.org/2000/svg" class="page-hero-svg">
+  <!-- Boden-GlÃ¼hen -->
+  <ellipse cx="150" cy="432" rx="140" ry="11" fill="rgba(112,160,32,.16)"/>
+
+  <!-- Pflanze 1: klein links -->
+  <path d="M50,434 C50,406 48,374 45,342" stroke="#3A7010" stroke-width="2.6" stroke-linecap="round"/>
+  <ellipse cx="30" cy="330" rx="23" ry="11" fill="#70A020" transform="rotate(-38 30 330)"/>
+  <ellipse cx="62" cy="332" rx="23" ry="11" fill="#5A8A18" transform="rotate(38 62 332)"/>
+
+  <!-- Pflanze 2: mittelgroÃŸ -->
+  <path d="M108,436 C109,396 107,348 103,286" stroke="#2E6008" stroke-width="3.0" stroke-linecap="round"/>
+  <ellipse cx="82" cy="272" rx="29" ry="13" fill="#80B030" transform="rotate(-35 82 272)"/>
+  <ellipse cx="126" cy="274" rx="29" ry="13" fill="#70A020" transform="rotate(35 126 274)"/>
+
+  <!-- Pflanze 3: groÃŸ â€“ Hauptfokus -->
+  <path d="M170,438 C171,382 169,308 164,208" stroke="#1E5204" stroke-width="4.0" stroke-linecap="round"/>
+  <ellipse cx="138" cy="192" rx="38" ry="17" fill="#9DD84A" transform="rotate(-30 138 192)"/>
+  <ellipse cx="196" cy="195" rx="38" ry="17" fill="#80C030" transform="rotate(30 196 195)"/>
+  <!-- SeitenblÃ¤tter -->
+  <ellipse cx="165" cy="296" rx="22" ry="10" fill="#70A020" transform="rotate(-48 165 296)"/>
+  <ellipse cx="177" cy="291" rx="22" ry="10" fill="#88C038" transform="rotate(44 177 291)"/>
+  <!-- Tautropfen -->
+  <circle cx="147" cy="185" r="3" fill="rgba(255,255,255,.40)"/>
+  <circle cx="190" cy="189" r="2" fill="rgba(255,255,255,.30)"/>
+
+  <!-- Pflanze 4: mittel rechts -->
+  <path d="M232,435 C233,392 231,342 227,272" stroke="#305808" stroke-width="3.2" stroke-linecap="round"/>
+  <ellipse cx="205" cy="258" rx="30" ry="14" fill="#90C840" transform="rotate(-33 205 258)"/>
+  <ellipse cx="252" cy="260" rx="30" ry="14" fill="#70A020" transform="rotate(33 252 260)"/>
+
+  <!-- Pflanze 5: klein ganz rechts -->
+  <path d="M282,433 C282,408 281,378 278,346" stroke="#3A6E10" stroke-width="2.4" stroke-linecap="round"/>
+  <ellipse cx="263" cy="334" rx="21" ry="10" fill="#80B830" transform="rotate(-36 263 334)"/>
+  <ellipse cx="297" cy="336" rx="21" ry="10" fill="#70A020" transform="rotate(36 297 336)"/>
+</svg></div>
+      <div class="page-hero-wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,55 C240,95 480,18 720,52 C960,86 1200,20 1440,48 L1440,90 L0,90 Z" fill="#F0F0E0"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- How it works – Split with Steps -->
+    <section class="section bg-white" id="how-it-works" aria-labelledby="how-heading">
+      <div class="container">
+        <div class="split-layout">
+          <div class="split-content">
+            <span class="eyebrow">Wie es funktioniert</span>
+            <h2 id="how-heading">So einfach geht's</h2>
+            <ol class="steps" role="list">
+              <li class="step reveal">
+                <span class="step-num" aria-hidden="true">1</span>
+                <div class="step-body">
+                  <h3>Keine Registrierung nötig</h3>
+                  <p>Einfach die Bestellung direkt in der Web-App aufgeben – ohne Account, ohne Anmeldung.</p>
+                </div>
+              </li>
+              <li class="step reveal reveal-delay-1">
+                <span class="step-num" aria-hidden="true">2</span>
+                <div class="step-body">
+                  <h3>Namen angeben</h3>
+                  <p>Ihren Namen in der Bestellung eintragen – so wissen wir, für wen das Gemüse bereitliegt.</p>
+                </div>
+              </li>
+              <li class="step reveal reveal-delay-2">
+                <span class="step-num" aria-hidden="true">3</span>
+                <div class="step-body">
+                  <h3>Donnerstags frisch abholen</h3>
+                  <p>Einfach donnerstags direkt am Feld vorbeikommen und Ihr frisch geerntetes Gemüse mitnehmen.</p>
+                </div>
+              </li>
+            </ol>
+            <div class="btn-group" style="margin-top:2rem;">
+              <a href="https://eifelgemuese.netlify.app/" class="btn btn-primary" target="_blank" rel="noopener">Bestellliste ansehen</a>
+            </div>
+          </div>
+          <div class="split-visual">
+            <img src="images/Garten 3.jpeg" alt="Frisch geerntetes Gemüse aus dem Garten – jede Woche neu in der Eifel" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Info Cards -->
+    <section class="section bg-cream" aria-labelledby="benefits-heading">
+      <div class="container">
+        <div class="section-header center">
+          <span class="eyebrow">Warum Eifelgemüse</span>
+          <h2 id="benefits-heading">Frisch. Saisonal. Regional.</h2>
+        </div>
+        <div class="grid-3">
+          <div class="info-card reveal">
+            <div class="info-card-icon" aria-hidden="true">
+              <svg class="icon-seasonal" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="40" cy="40" r="34" fill="rgba(255,160,0,.08)" stroke="rgba(255,160,0,.25)" stroke-width="1.5"/>
+                <!-- Sonne -->
+                <circle cx="58" cy="22" r="9" fill="#FFD700" opacity=".85"/>
+                <line x1="58" y1="10" x2="58" y2="7"  stroke="#FFD700" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+                <line x1="58" y1="34" x2="58" y2="37" stroke="#FFD700" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+                <line x1="46"  y1="22" x2="43"  y2="22" stroke="#FFD700" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+                <line x1="70"  y1="22" x2="73"  y2="22" stroke="#FFD700" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+                <line x1="49.5" y1="13.5" x2="47" y2="11" stroke="#FFD700" stroke-width="2" stroke-linecap="round" opacity=".6"/>
+                <line x1="66.5" y1="30.5" x2="69" y2="33" stroke="#FFD700" stroke-width="2" stroke-linecap="round" opacity=".6"/>
+                <!-- Erde -->
+                <path d="M18 62 Q40 57 62 62" fill="rgba(139,100,40,.20)" stroke="rgba(139,100,40,.35)" stroke-width="1.5"/>
+                <!-- Karotte -->
+                <path d="M33 62 C31 53 30 42 31 28" stroke="#FF7A00" stroke-width="3.5" stroke-linecap="round"/>
+                <!-- Karotten-Grün -->
+                <path d="M31 28 C26 22 20 18 17 14 C22 17 28 22 31 28Z" fill="#70A020"/>
+                <path d="M31 28 C29 20 28 13 30 9  C32 13 33 21 31 28Z" fill="#9DD84A"/>
+                <path d="M31 28 C36 22 40 17 39 12 C36 16 33 22 31 28Z" fill="#70A020"/>
+                <!-- Salat links -->
+                <path d="M22 62 C20 53 19 44 21 36 C23 42 23 52 22 62Z" fill="#9DD84A" opacity=".8"/>
+                <path d="M26 62 C24 52 25 43 27 36 C29 42 28 52 26 62Z" fill="#70A020" opacity=".8"/>
+              </svg>
+            </div>
+            <h3>Saisonal &amp; regional</h3>
+            <p>Was gerade wächst, kommt direkt zu Ihnen – ohne lange Transportwege, ohne Kompromisse bei der Frische.</p>
+          </div>
+          <div class="info-card reveal reveal-delay-1">
+            <div class="info-card-icon" aria-hidden="true">
+              <svg class="icon-weekly" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="40" cy="40" r="34" fill="rgba(112,160,32,.08)" stroke="rgba(112,160,32,.20)" stroke-width="1.5"/>
+                <!-- Erneuerungs-Pfeile -->
+                <path d="M19 40 A21 21 0 0 1 61 40" stroke="#70A020" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+                <path d="M61 40 A21 21 0 0 1 19 40" stroke="#9DD84A" stroke-width="2.8" stroke-linecap="round" fill="none" stroke-dasharray="4 3"/>
+                <!-- Pfeilspitzen -->
+                <path d="M17 34 L19 41 L26 37" stroke="#70A020" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M63 46 L61 39 L54 43" stroke="#9DD84A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <!-- Pflanze in der Mitte -->
+                <line x1="40" y1="56" x2="40" y2="35" stroke="#3A7010" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M40 48 C35 43 28 38 25 31 C30 33 37 40 40 48Z" fill="#70A020"/>
+                <path d="M40 42 C45 37 52 32 55 25 C50 27 43 34 40 42Z" fill="#9DD84A"/>
+                <path d="M40 35 C38 29 36 23 37 18 C39 21 41 27 40 35Z" fill="#5A8018"/>
+              </svg>
+            </div>
+            <h3>Wöchentlich aktuell</h3>
+            <p>Jeden Montag gibt es ein neues Angebot – immer nach Saison und immer frisch aus unserem Garten.</p>
+          </div>
+          <div class="info-card reveal reveal-delay-2">
+            <div class="info-card-icon" aria-hidden="true">
+              <svg class="icon-thursday" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="40" cy="40" r="34" fill="rgba(180,120,40,.08)" stroke="rgba(180,120,40,.22)" stroke-width="1.5"/>
+                <!-- Korb-Körper -->
+                <path d="M20 50 C20 64 60 64 60 50 L56 38 L24 38 Z" fill="rgba(200,160,80,.18)" stroke="#C8903C" stroke-width="2" stroke-linejoin="round"/>
+                <!-- Flechtmuster waagerecht -->
+                <path d="M22 45 Q40 48 58 45" stroke="#C8903C" stroke-width="1.3" fill="none" opacity=".65"/>
+                <path d="M21 52 Q40 55 59 52" stroke="#C8903C" stroke-width="1.3" fill="none" opacity=".65"/>
+                <!-- Flechtmuster senkrecht -->
+                <line x1="32" y1="38" x2="28" y2="64" stroke="#C8903C" stroke-width="1" opacity=".4"/>
+                <line x1="40" y1="38" x2="40" y2="64" stroke="#C8903C" stroke-width="1" opacity=".4"/>
+                <line x1="48" y1="38" x2="52" y2="64" stroke="#C8903C" stroke-width="1" opacity=".4"/>
+                <!-- Henkel -->
+                <path d="M26 38 C26 24 54 24 54 38" stroke="#A06820" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                <!-- Karotte im Korb -->
+                <path d="M34 38 C32 30 32 22 33 16 C35 21 35 30 34 38Z" fill="#FF7A00"/>
+                <path d="M33 16 C29 12 25 10 22 8 C26 11 30 13 33 16Z" fill="#70A020"/>
+                <path d="M33 16 C32 10 32 6 33 3  C34 6 34 11 33 16Z" fill="#9DD84A"/>
+                <!-- Grüns im Korb -->
+                <path d="M41 38 C40 29 40 21 41 15 C43 20 43 30 41 38Z" fill="#70A020"/>
+                <path d="M45 38 C44 29 45 21 46 15 C48 20 47 30 45 38Z" fill="#9DD84A"/>
+                <path d="M49 38 C48 31 49 24 51 18 C52 23 51 31 49 38Z" fill="#5A8018"/>
+              </svg>
+            </div>
+            <h3>Donnerstags abholen</h3>
+            <p>Frisch geerntet, direkt von unserem Garten – donnerstags ist Abholtag.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WhatsApp-Verteiler -->
+    <section class="section bg-white" aria-labelledby="whatsapp-heading">
+      <div class="container">
+        <div class="section-header center">
+          <span class="eyebrow">Wöchentliches Angebot</span>
+          <h2 id="whatsapp-heading">Immer wissen, was gerade wächst</h2>
+          <p class="lead">Tritt unserem WhatsApp-Verteiler bei und erhalte jede Woche direkt aufs Handy, was im Garten frisch ist – mit dem Link zur Web-App, um sofort zu bestellen.</p>
+        </div>
+        <div class="whatsapp-signup">
+          <div class="whatsapp-qr">
+            <img src="images/eifel_gemuese_qr.png" alt="WhatsApp QR-Code" width="148" height="148" style="border-radius:14px;display:block;">
+            <div class="qr-placeholder" style="display:none;">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="5" y="5" width="3" height="3" fill="#bbb"/><rect x="16" y="5" width="3" height="3" fill="#bbb"/><rect x="5" y="16" width="3" height="3" fill="#bbb"/><line x1="14" y1="14" x2="14" y2="14" stroke="#bbb" stroke-width="2"/><line x1="17" y1="14" x2="21" y2="14" stroke="#bbb" stroke-width="2"/><line x1="14" y1="17" x2="14" y2="21" stroke="#bbb" stroke-width="2"/><line x1="17" y1="17" x2="21" y2="21" stroke="#bbb" stroke-width="2"/></svg>
+              QR-Code folgt in Kürze
+            </div>
+            <p>QR-Code scannen</p>
+          </div>
+          <div class="whatsapp-divider">oder</div>
+          <div class="whatsapp-info">
+            <p>Schreib einfach <strong>„Gemüse"</strong> an unsere WhatsApp-Nummer – und du bist dabei. Ab dann bekommst du jede Woche unser aktuelles Angebot und kannst direkt über den Link in der App bestellen.</p>
+            <a href="https://wa.me/32474422070?text=Gem%C3%BCse" class="btn-whatsapp" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.997 2.003C6.476 2.003 2 6.479 2 12c0 1.942.504 3.763 1.383 5.35L2 22l4.783-1.358A9.949 9.949 0 0011.997 22C17.52 22 22 17.523 22 12c0-5.52-4.48-9.997-10.003-9.997zm0 18.188a8.166 8.166 0 01-4.17-1.145l-.3-.178-3.102.881.858-3.033-.196-.31A8.167 8.167 0 013.83 12c0-4.51 3.667-8.178 8.167-8.178S20.163 7.49 20.163 12c0 4.508-3.666 8.191-8.166 8.191z"/></svg>
+              WhatsApp schreiben
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Big CTA -->
+    <section class="section bg-dark" aria-labelledby="webapp-heading">
+      <div class="container">
+        <div class="section-header center">
+          <h2 id="webapp-heading">Jetzt zur Bestell-Web-App</h2>
+          <p class="lead">Keine Registrierung nötig – einfach Gemüse aussuchen, Namen eintragen und donnerstags frisch abholen.</p>
+          <div class="btn-group" style="margin-top: 2rem; justify-content: center;">
+            <a href="#" class="btn btn-primary">Zur Bestell-Web-App</a>
+            <a href="#how-it-works" class="btn btn-outline-white">So funktioniert's</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="images/logo.png" alt="eifel greens" class="footer-logo-img" />
+          <p class="footer-desc">Frisch geerntete Microgreens aus der Eifel – für Restaurants, Handel und Zuhause.</p>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-title">Navigation</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="microgreens.html">Microgreens</a></li>
+            <li><a href="mixes.html">Unsere Mixes</a></li>
+            <li><a href="was-sind-microgreens.html">Was sind Microgreens?</a></li>
+            <li><a href="eifelgemuese.html">Eifelgemüse</a></li>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-title">Kontakt</h3>
+          <address>Eifel Greens<br>Jérôme Messerich<br>Eifelregion, Belgien<br><br><a href="mailto:eifelgreens@outlook.de">eifelgreens@outlook.de</a></address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Eifel Greens · Jérôme Messerich · Eifelregion, Belgien</p>
+        <p><a href="impressum.html" style="color:inherit;text-decoration:none;opacity:.7;">Impressum</a> · <a href="agb.html" style="color:inherit;text-decoration:none;opacity:.7;">AGB</a> · <a href="datenschutz.html" style="color:inherit;text-decoration:none;opacity:.7;">Datenschutz</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

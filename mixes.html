@@ -1,0 +1,753 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unsere Mixes – Aroma, Gourmet &amp; Vital | Eifel Greens</title>
+  <meta name="description" content="Drei Microgreens-Mixes aus der Eifel: Aroma Mix, Gourmet Mix und Vital Mix – frisch, lokal, unbehandelt." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+  /* Quality Card SVG Icons */
+  .quality-card .q-icon svg { width: 34px; height: 34px; display: block; }
+
+  @keyframes q-float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-5px); }
+  }
+  @keyframes q-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  @keyframes q-pulse {
+    0%, 100% { opacity: .85; transform: scale(1); }
+    50%       { opacity: 1;   transform: scale(1.10); }
+  }
+  .q-icon-float { animation: q-float 3s ease-in-out infinite; }
+  .q-icon-spin  { animation: q-spin  8s linear infinite; transform-origin: center; }
+  .q-icon-pulse { animation: q-pulse 2.5s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+</style>
+  <style>
+    /* ── MIXES PAGE – SPLIT LAYOUT ── */
+    .page-hero .container { text-align: center; }
+
+    .mix-intro {
+      background: #fff;
+      text-align: center;
+      padding: var(--sp-16) var(--sp-4) var(--sp-12);
+    }
+    .mix-intro .eyebrow { margin-bottom: var(--sp-3); justify-content: center; }
+    .mix-intro h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); color: var(--dark-green); margin-bottom: var(--sp-4); }
+    .mix-intro .lead { color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+
+    .mix-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 560px;
+    }
+    .mix-section.flip { direction: rtl; }
+    .mix-section.flip > * { direction: ltr; }
+
+    /* Photo side */
+    .mix-photo {
+      position: relative;
+      overflow: hidden;
+      min-height: 480px;
+    }
+    .mix-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .8s ease;
+    }
+    .mix-section:hover .mix-photo img { transform: scale(1.04); }
+
+    .mix-photo-badge {
+      position: absolute;
+      top: 28px;
+      right: 28px;
+      padding: 10px 22px;
+      border-radius: var(--r-full);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #fff;
+      letter-spacing: .02em;
+      backdrop-filter: blur(4px);
+    }
+    .mix-section.flip .mix-photo-badge {
+      right: auto;
+      left: 28px;
+    }
+
+    /* Content side */
+    .mix-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--sp-16) var(--sp-16);
+      gap: var(--sp-6);
+    }
+
+    .mix-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+      line-height: 1.1;
+      margin-top: var(--sp-2);
+    }
+
+    .mix-tagline {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .mix-block-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: var(--sp-2);
+    }
+
+    .mix-geschmack p {
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .mix-passt-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-2);
+    }
+    .mix-passt-tag {
+      padding: 6px 16px;
+      border-radius: var(--r-full);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .mix-availability {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+    }
+    .mix-avail-row {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-4);
+      background: rgba(255,255,255,.65);
+      border-radius: var(--r-md);
+      padding: var(--sp-3) var(--sp-4);
+      border: 1px solid rgba(0,0,0,.06);
+    }
+    .mix-avail-icon {
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+      border-radius: var(--r-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,.04);
+    }
+    .mix-avail-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+    .mix-aroma .mix-avail-icon svg   { stroke: var(--green-dark); }
+    .mix-gourmet .mix-avail-icon svg { stroke: var(--orange-dark); }
+    .mix-vital .mix-avail-icon svg   { stroke: var(--teal-dark); }
+    .mix-aroma .mix-avail-icon   { background: rgba(112,160,32,.10); }
+    .mix-gourmet .mix-avail-icon { background: rgba(240,160,32,.10); }
+    .mix-vital .mix-avail-icon   { background: rgba(32,160,160,.10); }
+
+    .mix-avail-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+    .mix-avail-detail {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .mix-cta { margin-top: var(--sp-2); }
+
+    /* Aroma – green */
+    .mix-aroma { background: #f2f8ea; }
+    .mix-aroma .mix-photo-badge { background: var(--green); }
+    .mix-aroma .mix-heading { color: var(--green-dark); }
+    .mix-aroma .mix-passt-tag { background: var(--green); }
+
+    /* Gourmet – orange */
+    .mix-gourmet { background: #fdf6ec; }
+    .mix-gourmet .mix-photo-badge { background: var(--orange); }
+    .mix-gourmet .mix-heading { color: var(--orange-dark); }
+    .mix-gourmet .mix-passt-tag { background: var(--orange); }
+
+    /* Vital – teal */
+    .mix-vital { background: #edf7f7; }
+    .mix-vital .mix-photo-badge { background: var(--teal); }
+    .mix-vital .mix-heading { color: var(--teal-dark); }
+    .mix-vital .mix-passt-tag { background: var(--teal); }
+
+    .mix-section + .mix-section {
+      border-top: 1px solid rgba(0,0,0,.07);
+    }
+
+    /* ── QUALITIES ── */
+    .mixes-qualities {
+      background: #fff;
+      padding: var(--sp-20) var(--sp-4);
+      text-align: center;
+    }
+    .mixes-qualities .section-header { margin-bottom: var(--sp-12); }
+    .mixes-qualities .section-header .eyebrow { justify-content: center; }
+    .mixes-qualities .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      color: var(--dark-green);
+    }
+
+    .qualities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-6);
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .quality-card {
+      background: white;
+      border-radius: var(--r-lg);
+      padding: var(--sp-10) var(--sp-8);
+      text-align: center;
+      border: 1px solid rgba(0,60,40,.07);
+      border-top: 3px solid rgba(112,160,32,.3);
+      box-shadow: 0 2px 12px rgba(0,40,32,.06);
+      transition: transform var(--t-med), box-shadow var(--t-med);
+    }
+    .quality-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 28px rgba(0,40,32,.10);
+      border-top-color: var(--green);
+    }
+    .quality-card .q-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto var(--sp-5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(112,160,32,.12) 0%, rgba(157,216,74,.06) 100%);
+      border: 1.5px solid rgba(112,160,32,.20);
+    }
+    .quality-card .q-icon svg {
+      width: 30px;
+      height: 30px;
+      stroke: var(--green-dark);
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+    .quality-card h3 { font-size: 1.15rem; font-weight: 600; color: var(--dark-green); margin-bottom: var(--sp-3); }
+    .quality-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.72; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .mix-section,
+      .mix-section.flip {
+        grid-template-columns: 1fr;
+        direction: ltr;
+      }
+      .mix-photo { min-height: 300px; }
+      .mix-section.flip .mix-photo-badge { left: auto; right: 28px; }
+      .mix-content { padding: var(--sp-10) var(--sp-6); }
+      .qualities-grid { grid-template-columns: 1fr; gap: var(--sp-4); }
+    }
+    @media (max-width: 600px) {
+      .mix-content { padding: var(--sp-8) var(--sp-5); }
+      .mix-heading { font-size: 2rem; }
+    }
+  </style>
+  <style>
+    /* Override: Quality-Card Icons viel größer und sichtbar */
+    .quality-card .q-icon {
+      width: auto !important; height: auto !important;
+      background: none !important; border: none !important;
+      box-shadow: none !important; border-radius: 0 !important;
+      margin: 0 auto var(--sp-6) !important;
+    }
+    .quality-card .q-icon svg { width: 96px !important; height: 96px !important; stroke: none !important; }
+    .mixes-qualities .section-header { text-align: center; }
+    @keyframes mq-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+    @keyframes mq-pulse { 0%,100%{opacity:.82;transform:scale(1)} 50%{opacity:1;transform:scale(1.12)} }
+    .mq-float { animation: mq-float 3.2s ease-in-out infinite; }
+    .mq-pulse-1 { animation: mq-pulse 2.4s ease-in-out infinite; transform-box:fill-box; transform-origin:center; }
+    .mq-pulse-2 { animation: mq-pulse 2.4s ease-in-out .5s infinite; transform-box:fill-box; transform-origin:center; }
+    .mq-pulse-3 { animation: mq-pulse 2.4s ease-in-out 1s infinite; transform-box:fill-box; transform-origin:center; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Hauptinhalt springen</a>
+
+  <nav class="nav" id="nav" role="navigation" aria-label="Hauptnavigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="Eifel Greens Startseite">
+        <img src="images/logo.png" alt="eifel greens" class="nav-logo-img" />
+      </a>
+      <button class="nav-burger" id="navBurger" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="microgreens.html">Microgreens</a></li>
+        <li><a href="mixes.html">Unsere Mixes</a></li>
+        <li><a href="was-sind-microgreens.html">Was sind Microgreens?</a></li>
+        <li><a href="eifelgemuese.html">Eifelgemüse</a></li>
+        <li><a href="ueber-uns.html">Über uns</a></li>
+        <li><a href="kontakt.html" class="nav-cta">Kontakt</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="page-hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <p class="eyebrow">Eifel Greens</p>
+        <h1 id="hero-heading">Unsere drei Mixes</h1>
+        <p class="lead">Jeder Mix sorgfältig zusammengestellt für unterschiedliche Geschmäcker und Anwendungen – für Restaurants, Handel und Zuhause.</p>
+      </div>
+      <div class="page-hero-plant" aria-hidden="true"><svg viewBox="0 0 300 440" fill="none" xmlns="http://www.w3.org/2000/svg" class="page-hero-svg">
+  <!-- Boden-GlÃ¼hen -->
+  <ellipse cx="150" cy="432" rx="140" ry="11" fill="rgba(112,160,32,.16)"/>
+
+  <!-- Pflanze 1: klein links -->
+  <path d="M50,434 C50,406 48,374 45,342" stroke="#3A7010" stroke-width="2.6" stroke-linecap="round"/>
+  <ellipse cx="30" cy="330" rx="23" ry="11" fill="#70A020" transform="rotate(-38 30 330)"/>
+  <ellipse cx="62" cy="332" rx="23" ry="11" fill="#5A8A18" transform="rotate(38 62 332)"/>
+
+  <!-- Pflanze 2: mittelgroÃŸ -->
+  <path d="M108,436 C109,396 107,348 103,286" stroke="#2E6008" stroke-width="3.0" stroke-linecap="round"/>
+  <ellipse cx="82" cy="272" rx="29" ry="13" fill="#80B030" transform="rotate(-35 82 272)"/>
+  <ellipse cx="126" cy="274" rx="29" ry="13" fill="#70A020" transform="rotate(35 126 274)"/>
+
+  <!-- Pflanze 3: groÃŸ â€“ Hauptfokus -->
+  <path d="M170,438 C171,382 169,308 164,208" stroke="#1E5204" stroke-width="4.0" stroke-linecap="round"/>
+  <ellipse cx="138" cy="192" rx="38" ry="17" fill="#9DD84A" transform="rotate(-30 138 192)"/>
+  <ellipse cx="196" cy="195" rx="38" ry="17" fill="#80C030" transform="rotate(30 196 195)"/>
+  <!-- SeitenblÃ¤tter -->
+  <ellipse cx="165" cy="296" rx="22" ry="10" fill="#70A020" transform="rotate(-48 165 296)"/>
+  <ellipse cx="177" cy="291" rx="22" ry="10" fill="#88C038" transform="rotate(44 177 291)"/>
+  <!-- Tautropfen -->
+  <circle cx="147" cy="185" r="3" fill="rgba(255,255,255,.40)"/>
+  <circle cx="190" cy="189" r="2" fill="rgba(255,255,255,.30)"/>
+
+  <!-- Pflanze 4: mittel rechts -->
+  <path d="M232,435 C233,392 231,342 227,272" stroke="#305808" stroke-width="3.2" stroke-linecap="round"/>
+  <ellipse cx="205" cy="258" rx="30" ry="14" fill="#90C840" transform="rotate(-33 205 258)"/>
+  <ellipse cx="252" cy="260" rx="30" ry="14" fill="#70A020" transform="rotate(33 252 260)"/>
+
+  <!-- Pflanze 5: klein ganz rechts -->
+  <path d="M282,433 C282,408 281,378 278,346" stroke="#3A6E10" stroke-width="2.4" stroke-linecap="round"/>
+  <ellipse cx="263" cy="334" rx="21" ry="10" fill="#80B830" transform="rotate(-36 263 334)"/>
+  <ellipse cx="297" cy="336" rx="21" ry="10" fill="#70A020" transform="rotate(36 297 336)"/>
+</svg></div>
+      <div class="page-hero-wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,55 C240,95 480,18 720,52 C960,86 1200,20 1440,48 L1440,90 L0,90 Z" fill="#ffffff"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ── AROMA MIX ── -->
+    <section class="mix-section mix-aroma reveal" aria-labelledby="aroma-heading">
+
+      <div class="mix-photo">
+        <img
+          src="images/Aroma .png"
+          alt="Aroma Mix – drei Sorten Radieschen-Microgreens"
+          loading="lazy"
+        />
+        <span class="mix-photo-badge">Aroma Mix</span>
+      </div>
+
+      <div class="mix-content">
+        <div>
+          <h2 class="mix-heading" id="aroma-heading">Aroma Mix</h2>
+          <p class="mix-tagline">Kräftig &amp; würzig</p>
+        </div>
+
+        <div class="mix-geschmack">
+          <p class="mix-block-label">Geschmacksprofil</p>
+          <p>Drei Sorten Radieschen-Microgreens – grün, pink und violett – vereinen sich zu einem lebhaften, würzigen Mix mit leicht pfeffriger Schärfe und frischer Note. Die unterschiedlichen Sorten bringen nicht nur Geschmack, sondern auch faszinierende Farbe auf jeden Teller.</p>
+        </div>
+
+        <div>
+          <p class="mix-block-label">Passt zu</p>
+          <div class="mix-passt-tags">
+            <span class="mix-passt-tag">Avocado-Toast</span>
+            <span class="mix-passt-tag">Carpaccio</span>
+            <span class="mix-passt-tag">Suppen</span>
+            <span class="mix-passt-tag">Salat</span>
+            <span class="mix-passt-tag">Bowl</span>
+            <span class="mix-passt-tag">Sandwiches</span>
+          </div>
+        </div>
+
+        <div class="mix-availability">
+          <p class="mix-block-label">Erhältlich als</p>
+          <div class="mix-avail-row">
+            <span class="mix-avail-icon">
+              <!-- Gastroküche: Kochhaube -->
+              <svg viewBox="0 0 24 24"><path d="M6 13.87A4 4 0 017.41 6a5.11 5.11 0 019.18 0A4 4 0 0118 13.87V21H6z"/><line x1="6" y1="17" x2="18" y2="17"/></svg>
+            </span>
+            <div>
+              <p class="mix-avail-title">Für die Gastroküche</p>
+              <p class="mix-avail-detail">Gramm individuell anpassbar</p>
+            </div>
+          </div>
+          <div class="mix-avail-row">
+            <span class="mix-avail-icon">
+              <!-- Handelspackung: Verpackung/Box -->
+              <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </span>
+            <div>
+              <p class="mix-avail-title">Handelspackung</p>
+              <p class="mix-avail-detail">40 g</p>
+            </div>
+          </div>
+          <div class="mix-avail-row">
+            <span class="mix-avail-icon">
+              <!-- Privatpackung: Person/User -->
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </span>
+            <div>
+              <p class="mix-avail-title">Privatpackung</p>
+              <p class="mix-avail-detail">40 g</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mix-cta">
+          <a href="kontakt.html" class="btn btn-primary">Anfrage stellen</a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── GOURMET MIX ── -->
+    <section class="mix-section mix-gourmet flip reveal" aria-labelledby="gourmet-heading">
+
+      <div class="mix-photo">
+        <img
+          src="images/Aroma .png"
+          alt="Gourmet Mix – feine Microgreens für die gehobene Küche"
+          loading="lazy"
+        />
+        <span class="mix-photo-badge">Gourmet Mix</span>
+      </div>
+
+      <div class="mix-content">
+        <div>
+          <h2 class="mix-heading" id="gourmet-heading">Gourmet Mix</h2>
+          <p class="mix-tagline">Fein &amp; elegant</p>
+        </div>
+
+        <div class="mix-geschmack">
+          <p class="mix-block-label">Geschmacksprofil</p>
+          <p>Eine raffinierte Komposition aus Rucola, Rotkohl, Kohlrabi und Brunnenkresse. Der Rucola bringt eine elegante Pfeffernote, Kohlrabi eine zarte Süße, während Brunnenkresse und Rotkohl frische Würze und intensive Farbe beisteuern – ein Mix für die anspruchsvolle Küche.</p>
+        </div>
+
+        <div>
+          <p class="mix-block-label">Passt zu</p>
+          <div class="mix-passt-tags">
+            <span class="mix-passt-tag">Fine Dining</span>
+            <span class="mix-passt-tag">Lachs &amp; Fisch</span>
+            <span class="mix-passt-tag">Vorspeisen</span>
+            <span class="mix-passt-tag">Tartare</span>
+            <span class="mix-passt-tag">Käseplatte</span>
+            <span class="mix-passt-tag">Salat</span>
+            <span class="mix-passt-tag">Bowl</span>
+          </div>
+        </div>
+
+        <div class="mix-availability">
+          <p class="mix-block-label">Erhältlich als</p>
+          <div class="mix-avail-row">
+            <span class="mix-avail-icon">
+              <!-- Gastroküche: Kochhaube -->
+              <svg viewBox="0 0 24 24"><path d="M6 13.87A4 4 0 017.41 6a5.11 5.11 0 019.18 0A4 4 0 0118 13.87V21H6z"/><line x1="6" y1="17" x2="18" y2="17"/></svg>
+            </span>
+            <div>
+              <p class="mix-avail-title">Für die Gastroküche</p>
+              <p class="mix-avail-detail">Gramm individuell anpassbar</p>
+            </div>
+          </div>
+          <div class="mix-avail-row">
+            <span class="mix-avail-icon">
+              <!-- Handelspackung: Verpackung/Box -->
+              <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </span>
+            <div>
+              <p class="mix-avail-title">Handelspackung</p>
+              <p class="mix-avail-detail">20 g</p>
+            </div>
+          </div>
+          <div class="mix-avail-row">
+            <span class="mix-avail-icon">
+              <!-- Privatpackung: Person/User -->
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </span>
+            <div>
+              <p class="mix-avail-title">Privatpackung</p>
+              <p class="mix-avail-detail">20 g</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mix-cta">
+          <a href="kontakt.html" class="btn btn-orange">Anfrage stellen</a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── VITAL MIX ── -->
+    <section class="mix-section mix-vital reveal" aria-labelledby="vital-heading">
+
+      <div class="mix-photo">
+        <img
+          src="images/Vital.png"
+          alt="Vital Mix – der nährstoffreichste Mix"
+          loading="lazy"
+        />
+        <span class="mix-photo-badge">Vital Mix</span>
+      </div>
+
+      <div class="mix-content">
+        <div>
+          <h2 class="mix-heading" id="vital-heading">Vital Mix</h2>
+          <p class="mix-tagline">Der nährstoffreichste Mix</p>
+        </div>
+
+        <div class="mix-geschmack">
+          <p class="mix-block-label">Geschmacksprofil</p>
+          <p>Unser reichhaltigster Mix vereint drei Radieschen-Sorten, Erbsen, Sonnenblumen, Amaranth, Brokkoli und Kapuzinerkresse. Erbsen und Sonnenblumen geben eine nussig-milde Basis, Brokkoli und Amaranth liefern Power-Nährstoffe, Kapuzinerkresse sorgt für lebendige Würze und leuchtende Farbtupfer.</p>
+        </div>
+
+        <div>
+          <p class="mix-block-label">Passt zu</p>
+          <div class="mix-passt-tags">
+            <span class="mix-passt-tag">Salate &amp; Bowls</span>
+            <span class="mix-passt-tag">Smoothies</span>
+            <span class="mix-passt-tag">Frühstück</span>
+            <span class="mix-passt-tag">Wraps</span>
+            <span class="mix-passt-tag">Poké Bowls</span>
+          </div>
+        </div>
+
+        <div class="mix-availability">
+          <p class="mix-block-label">Erhältlich als</p>
+          <div class="mix-avail-row">
+            <span class="mix-avail-icon">
+              <!-- Gastroküche: Kochhaube -->
+              <svg viewBox="0 0 24 24"><path d="M6 13.87A4 4 0 017.41 6a5.11 5.11 0 019.18 0A4 4 0 0118 13.87V21H6z"/><line x1="6" y1="17" x2="18" y2="17"/></svg>
+            </span>
+            <div>
+              <p class="mix-avail-title">Für die Gastroküche</p>
+              <p class="mix-avail-detail">Gramm individuell anpassbar</p>
+            </div>
+          </div>
+          <div class="mix-avail-row">
+            <span class="mix-avail-icon">
+              <!-- Handelspackung: Verpackung/Box -->
+              <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </span>
+            <div>
+              <p class="mix-avail-title">Handelspackung</p>
+              <p class="mix-avail-detail">50 g</p>
+            </div>
+          </div>
+          <div class="mix-avail-row">
+            <span class="mix-avail-icon">
+              <!-- Privatpackung: Person/User -->
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </span>
+            <div>
+              <p class="mix-avail-title">Privatpackung</p>
+              <p class="mix-avail-detail">50 g</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mix-cta">
+          <a href="kontakt.html" class="btn btn-teal">Anfrage stellen</a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Qualities -->
+    <div class="mixes-qualities">
+      <div class="section-header">
+        <span class="eyebrow">Warum Eifel Greens</span>
+        <h2>Qualität, die man schmeckt</h2>
+      </div>
+      <div class="qualities-grid">
+        <div class="quality-card reveal">
+          <div class="q-icon">
+            <svg class="mq-float" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="rub1" cx="50%" cy="45%" r="50%">
+                  <stop offset="0%" stop-color="rgba(157,216,74,.22)"/>
+                  <stop offset="100%" stop-color="rgba(112,160,32,.06)"/>
+                </radialGradient>
+              </defs>
+              <circle cx="48" cy="48" r="44" fill="url(#rub1)" stroke="rgba(112,160,32,.25)" stroke-width="1.8"/>
+              <path d="M48 83 C48 83 22 58 22 38 C22 24 34 13 48 13 C62 13 74 24 74 38 C74 58 48 83 48 83Z" fill="rgba(112,160,32,.14)" stroke="#3A7010" stroke-width="2.2" stroke-linejoin="round"/>
+              <line x1="48" y1="62" x2="48" y2="36" stroke="#2D5A27" stroke-width="2.8" stroke-linecap="round"/>
+              <path d="M48 54 C42 49 34 45 29 38 C35 40 44 46 48 54Z" fill="#4A8A18"/>
+              <path d="M48 47 C54 42 62 38 67 31 C61 33 52 38 48 47Z" fill="#9DD84A"/>
+              <path d="M48 37 C46 31 44 25 45 19 C47 22 49 29 48 37Z" fill="#3A7010"/>
+              <path d="M48 37 C50 31 52 25 51 19 C49 22 47 29 48 37Z" fill="#78C028"/>
+              <g class="mq-pulse-1"><circle cx="14" cy="32" r="5" fill="#F5C518" opacity=".85"/><circle cx="14" cy="32" r="2.5" fill="#fff" opacity=".75"/></g>
+              <g class="mq-pulse-2"><circle cx="82" cy="29" r="4.5" fill="#70C838" opacity=".82"/><circle cx="82" cy="29" r="2" fill="#fff" opacity=".7"/></g>
+              <g class="mq-pulse-3"><circle cx="13" cy="56" r="4" fill="#FFA020" opacity=".78"/><circle cx="13" cy="56" r="2" fill="#fff" opacity=".68"/></g>
+            </svg>
+          </div>
+          <h3>Regional &amp; unbehandelt</h3>
+          <p>Alle Mixes werden in unserer Produktion in der Eifel angebaut – vollständig unbehandelt und ohne Pestizide.</p>
+        </div>
+        <div class="quality-card reveal reveal-delay-1">
+          <div class="q-icon">
+            <svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="wfb1" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="rgba(157,216,74,.18)"/>
+                  <stop offset="100%" stop-color="rgba(112,160,32,.05)"/>
+                </radialGradient>
+              </defs>
+              <circle cx="48" cy="48" r="44" fill="url(#wfb1)" stroke="rgba(112,160,32,.25)" stroke-width="1.8"/>
+              <g class="mq-pulse-1">
+                <path d="M48 48 L28 28" stroke="#2D5A27" stroke-width="3.5" stroke-linecap="round"/>
+                <circle cx="22" cy="22" r="7" stroke="#2D5A27" stroke-width="2.5" fill="rgba(112,160,32,.15)"/>
+                <path d="M48 48 L28 68" stroke="#2D5A27" stroke-width="3.5" stroke-linecap="round"/>
+                <circle cx="22" cy="74" r="7" stroke="#2D5A27" stroke-width="2.5" fill="rgba(112,160,32,.15)"/>
+              </g>
+              <path d="M52 44 C50 36 49 28 50 18 C52 22 53 32 52 44Z" fill="#4A8A18"/>
+              <path d="M57 44 C56 35 56 25 57 16 C59 20 59 32 57 44Z" fill="#9DD84A"/>
+              <path d="M62 44 C62 34 63 25 62 16 C64 20 64 33 62 44Z" fill="#78C028"/>
+              <path d="M67 46 C68 37 70 27 70 18 C72 22 71 33 67 46Z" fill="#4A8A18"/>
+              <path d="M72 48 C74 39 77 30 78 22 C79 27 77 38 72 48Z" fill="#9DD84A"/>
+              <line x1="48" y1="48" x2="82" y2="48" stroke="#78C028" stroke-width="1.8" stroke-dasharray="3 3" opacity=".6"/>
+              <path d="M74 43 L83 48 L74 53" stroke="#3A7010" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <h3>Wöchentlich frisch geerntet</h3>
+          <p>Wir ernten und liefern wöchentlich – so garantieren wir maximale Frische und optimalen Geschmack.</p>
+        </div>
+        <div class="quality-card reveal reveal-delay-2">
+          <div class="q-icon">
+            <svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="fjkb1" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="rgba(200,168,106,.15)"/>
+                  <stop offset="100%" stop-color="rgba(112,160,32,.05)"/>
+                </radialGradient>
+              </defs>
+              <circle cx="48" cy="48" r="44" fill="url(#fjkb1)" stroke="rgba(112,160,32,.22)" stroke-width="1.8"/>
+              <!-- Restaurant: Cloche (oben links) -->
+              <path d="M12 40 C12 28 30 21 30 21 C30 21 48 28 48 40" fill="rgba(220,220,210,.3)" stroke="#B0A090" stroke-width="2" stroke-linecap="round"/>
+              <line x1="9" y1="40" x2="51" y2="40" stroke="#B0A090" stroke-width="2" stroke-linecap="round"/>
+              <line x1="30" y1="21" x2="30" y2="17" stroke="#B0A090" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M25 40 C23 34 21 28 22 23 C24 26 25 33 25 40Z" fill="#9DD84A"/>
+              <path d="M30 40 C30 33 30 26 31 21 C32 24 32 33 30 40Z" fill="#4A8A18"/>
+              <path d="M35 40 C37 34 39 28 38 23 C36 26 35 33 35 40Z" fill="#9DD84A"/>
+              <!-- Supermarkt-Box (oben rechts) -->
+              <rect x="58" y="22" width="26" height="20" rx="3" fill="rgba(200,240,160,.25)" stroke="#4A8A18" stroke-width="2"/>
+              <line x1="71" y1="22" x2="71" y2="42" stroke="#4A8A18" stroke-width="1" opacity=".4"/>
+              <path d="M58 32 L84 32" stroke="#4A8A18" stroke-width="1" opacity=".35"/>
+              <path d="M66 28 C64 23 63 19 64 16 C66 19 67 24 66 28Z" fill="#78C028"/>
+              <path d="M71 28 C71 23 71 18 72 15 C73 18 73 24 71 28Z" fill="#4A8A18"/>
+              <path d="M76 28 C78 23 79 19 78 16 C76 19 75 24 76 28Z" fill="#78C028"/>
+              <!-- Haus (unten mitte) -->
+              <path d="M26 82 L26 60 L48 50 L70 60 L70 82 Z" fill="rgba(200,240,160,.22)" stroke="#3A7010" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M20 62 L48 48 L76 62" stroke="#3A7010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <rect x="37" y="64" width="22" height="18" rx="2" fill="rgba(200,240,255,.3)" stroke="#3A7010" stroke-width="1.5"/>
+              <path d="M43 72 C41 66 40 61 41 57 C43 60 44 67 43 72Z" fill="#9DD84A"/>
+              <path d="M48 72 C48 65 48 59 49 55 C50 58 50 66 48 72Z" fill="#4A8A18"/>
+              <path d="M53 72 C55 66 56 61 55 57 C53 60 52 67 53 72Z" fill="#9DD84A"/>
+              <!-- Verbindungspunkte -->
+              <circle cx="48" cy="48" r="3.5" fill="#3A7010" opacity=".8"/>
+              <line x1="30" y1="42" x2="44" y2="49" stroke="#9DD84A" stroke-width="1.2" stroke-dasharray="2 3" opacity=".6"/>
+              <line x1="58" y1="42" x2="52" y2="47" stroke="#9DD84A" stroke-width="1.2" stroke-dasharray="2 3" opacity=".6"/>
+            </svg>
+          </div>
+          <h3>Für jede Küche</h3>
+          <p>Ob Profiküche, Einzelhandel oder Zuhause – unsere Mixes passen zu jedem Anlass und jeder Küche.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <section class="section-sm bg-cream" aria-labelledby="cta-heading">
+      <div class="container">
+        <div class="section-header center">
+          <h2 id="cta-heading">Interesse an unseren Mixes?</h2>
+          <p class="lead">Wir freuen uns über Ihre Anfrage – egal ob Restaurant, Handel oder Privatkunde.</p>
+          <div class="btn-group" style="margin-top: 2rem; justify-content: center;">
+            <a href="kontakt.html" class="btn btn-primary">Kontakt aufnehmen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="images/logo.png" alt="eifel greens" class="footer-logo-img" />
+          <p class="footer-desc">Frisch geerntete Microgreens aus der Eifel – für Restaurants, Handel und Zuhause.</p>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-title">Navigation</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="microgreens.html">Microgreens</a></li>
+            <li><a href="mixes.html">Unsere Mixes</a></li>
+            <li><a href="was-sind-microgreens.html">Was sind Microgreens?</a></li>
+            <li><a href="eifelgemuese.html">Eifelgemüse</a></li>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-title">Kontakt</h3>
+          <address>Eifel Greens<br>Jérôme Messerich<br>Eifelregion, Belgien<br><br><a href="mailto:eifelgreens@outlook.de">eifelgreens@outlook.de</a></address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Eifel Greens · Jérôme Messerich · Eifelregion, Belgien</p>
+        <p><a href="impressum.html" style="color:inherit;text-decoration:none;opacity:.7;">Impressum</a> · <a href="agb.html" style="color:inherit;text-decoration:none;opacity:.7;">AGB</a> · <a href="datenschutz.html" style="color:inherit;text-decoration:none;opacity:.7;">Datenschutz</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

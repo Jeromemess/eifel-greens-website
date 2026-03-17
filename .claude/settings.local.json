@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx skills:*)",
+      "Bash(cp -r /tmp/ui-ux-pro-max-skill/src/ui-ux-pro-max/data \"C:/Users/PC/Documents/Webseite Claude/.agents/skills/ui-ux-pro-max/data_real\")",
+      "Bash(cp -r /tmp/ui-ux-pro-max-skill/src/ui-ux-pro-max/scripts \"C:/Users/PC/Documents/Webseite Claude/.agents/skills/ui-ux-pro-max/scripts_real\")",
+      "Bash(rm \"C:/Users/PC/Documents/Webseite Claude/.agents/skills/ui-ux-pro-max/data\")",
+      "Bash(rm \"C:/Users/PC/Documents/Webseite Claude/.agents/skills/ui-ux-pro-max/scripts\")",
+      "Bash(mv \"C:/Users/PC/Documents/Webseite Claude/.agents/skills/ui-ux-pro-max/data_real\" \"C:/Users/PC/Documents/Webseite Claude/.agents/skills/ui-ux-pro-max/data\")",
+      "Bash(mv \"C:/Users/PC/Documents/Webseite Claude/.agents/skills/ui-ux-pro-max/scripts_real\" \"C:/Users/PC/Documents/Webseite Claude/.agents/skills/ui-ux-pro-max/scripts\")",
+      "Bash(python skills/ui-ux-pro-max/scripts/search.py \"microgreens organic farm local food fresh premium\" --design-system -p \"Eifel Greens\" -f markdown)",
+      "Bash(py -3 --version)",
+      "Bash(where python:*)"
+    ]
+  }
+}

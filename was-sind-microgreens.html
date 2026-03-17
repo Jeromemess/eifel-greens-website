@@ -1,0 +1,386 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Was sind Microgreens? | Eifel Greens</title>
+  <meta name="description" content="Alles über Microgreens: Was sie sind, wie sie verwendet werden und warum sie so besonders sind." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    .info-card-icon { width: auto !important; height: auto !important; background: none !important; border: none !important; display: block !important; margin-bottom: 1.5rem !important; }
+    .info-card-icon svg { width: 96px !important; height: 96px !important; display: block; margin: 0 auto; }
+
+    /* Nährstoffreich – schwebende Nährstoff-Punkte */
+    @keyframes float-dot {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-6px); }
+    }
+    .icon-n-d1 { animation: float-dot 2.4s ease-in-out infinite; }
+    .icon-n-d2 { animation: float-dot 2.4s ease-in-out .55s infinite; }
+    .icon-n-d3 { animation: float-dot 2.4s ease-in-out 1.1s infinite; }
+    .icon-n-d4 { animation: float-dot 2.4s ease-in-out 1.65s infinite; }
+
+    /* Schnell wachsend – Pflanze sprießt */
+    @keyframes sprout {
+      0%        { transform: scaleY(0); opacity: 0; }
+      25%       { opacity: 1; }
+      70%       { transform: scaleY(1.06); }
+      100%      { transform: scaleY(1); }
+    }
+    .icon-grow-plant {
+      transform-box: fill-box;
+      transform-origin: bottom center;
+      animation: sprout 3s ease-out infinite;
+    }
+    @keyframes speed-flash {
+      0%, 100% { opacity: 0; transform: translateX(0); }
+      40%, 60% { opacity: .75; transform: translateX(4px); }
+    }
+    .icon-grow-s1 { animation: speed-flash 1.8s ease-in-out infinite; }
+    .icon-grow-s2 { animation: speed-flash 1.8s ease-in-out .28s infinite; }
+    .icon-grow-s3 { animation: speed-flash 1.8s ease-in-out .56s infinite; }
+    .info-card { text-align: center; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Hauptinhalt springen</a>
+
+  <nav class="nav" id="nav" role="navigation" aria-label="Hauptnavigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="Eifel Greens Startseite">
+        <img src="images/logo.png" alt="eifel greens" class="nav-logo-img" />
+      </a>
+      <button class="nav-burger" id="navBurger" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="microgreens.html">Microgreens</a></li>
+        <li><a href="mixes.html">Unsere Mixes</a></li>
+        <li><a href="was-sind-microgreens.html">Was sind Microgreens?</a></li>
+        <li><a href="eifelgemuese.html">Eifelgemüse</a></li>
+        <li><a href="ueber-uns.html">Über uns</a></li>
+        <li><a href="kontakt.html" class="nav-cta">Kontakt</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="page-hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <p class="eyebrow">Wissen &amp; Hintergrund</p>
+        <h1 id="hero-heading">Was sind Microgreens?</h1>
+        <p class="lead">Kleine Kraftpakete mit großem Geschmack – alles, was Sie über Microgreens wissen müssen.</p>
+      </div>
+      <div class="page-hero-plant" aria-hidden="true"><svg viewBox="0 0 300 440" fill="none" xmlns="http://www.w3.org/2000/svg" class="page-hero-svg">
+  <!-- Boden-GlÃ¼hen -->
+  <ellipse cx="150" cy="432" rx="140" ry="11" fill="rgba(112,160,32,.16)"/>
+
+  <!-- Pflanze 1: klein links -->
+  <path d="M50,434 C50,406 48,374 45,342" stroke="#3A7010" stroke-width="2.6" stroke-linecap="round"/>
+  <ellipse cx="30" cy="330" rx="23" ry="11" fill="#70A020" transform="rotate(-38 30 330)"/>
+  <ellipse cx="62" cy="332" rx="23" ry="11" fill="#5A8A18" transform="rotate(38 62 332)"/>
+
+  <!-- Pflanze 2: mittelgroÃŸ -->
+  <path d="M108,436 C109,396 107,348 103,286" stroke="#2E6008" stroke-width="3.0" stroke-linecap="round"/>
+  <ellipse cx="82" cy="272" rx="29" ry="13" fill="#80B030" transform="rotate(-35 82 272)"/>
+  <ellipse cx="126" cy="274" rx="29" ry="13" fill="#70A020" transform="rotate(35 126 274)"/>
+
+  <!-- Pflanze 3: groÃŸ â€“ Hauptfokus -->
+  <path d="M170,438 C171,382 169,308 164,208" stroke="#1E5204" stroke-width="4.0" stroke-linecap="round"/>
+  <ellipse cx="138" cy="192" rx="38" ry="17" fill="#9DD84A" transform="rotate(-30 138 192)"/>
+  <ellipse cx="196" cy="195" rx="38" ry="17" fill="#80C030" transform="rotate(30 196 195)"/>
+  <!-- SeitenblÃ¤tter -->
+  <ellipse cx="165" cy="296" rx="22" ry="10" fill="#70A020" transform="rotate(-48 165 296)"/>
+  <ellipse cx="177" cy="291" rx="22" ry="10" fill="#88C038" transform="rotate(44 177 291)"/>
+  <!-- Tautropfen -->
+  <circle cx="147" cy="185" r="3" fill="rgba(255,255,255,.40)"/>
+  <circle cx="190" cy="189" r="2" fill="rgba(255,255,255,.30)"/>
+
+  <!-- Pflanze 4: mittel rechts -->
+  <path d="M232,435 C233,392 231,342 227,272" stroke="#305808" stroke-width="3.2" stroke-linecap="round"/>
+  <ellipse cx="205" cy="258" rx="30" ry="14" fill="#90C840" transform="rotate(-33 205 258)"/>
+  <ellipse cx="252" cy="260" rx="30" ry="14" fill="#70A020" transform="rotate(33 252 260)"/>
+
+  <!-- Pflanze 5: klein ganz rechts -->
+  <path d="M282,433 C282,408 281,378 278,346" stroke="#3A6E10" stroke-width="2.4" stroke-linecap="round"/>
+  <ellipse cx="263" cy="334" rx="21" ry="10" fill="#80B830" transform="rotate(-36 263 334)"/>
+  <ellipse cx="297" cy="336" rx="21" ry="10" fill="#70A020" transform="rotate(36 297 336)"/>
+</svg></div>
+      <div class="page-hero-wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,55 C240,95 480,18 720,52 C960,86 1200,20 1440,48 L1440,90 L0,90 Z" fill="#F0F0E0"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Explanation Split -->
+    <section class="section bg-white" aria-labelledby="explanation-heading">
+      <div class="container">
+        <div class="split-layout">
+          <div class="split-content">
+            <span class="eyebrow">Was steckt dahinter</span>
+            <h2 id="explanation-heading">Junge Pflanzen. Intensiver Geschmack.</h2>
+            <p>Microgreens sind junge Gemüsepflänzchen, die kurz nach dem Keimen geerntet werden – in der Regel 7 bis 14 Tage nach der Aussaat. In dieser frühen Wachstumsphase sind sie besonders reich an Nährstoffen, Vitaminen und Geschmacksstoffen.</p>
+            <p>Trotz ihrer kleinen Größe entfalten sie ein intensives Aroma und bringen Farbe und Frische in viele Gerichte.</p>
+          </div>
+          <div class="split-visual">
+            <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;border-radius:var(--r-lg);">
+              <source src="images/video 1.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Info Cards -->
+    <section class="section bg-cream" aria-labelledby="benefits-heading">
+      <div class="container">
+        <div class="section-header center">
+          <span class="eyebrow">Warum Microgreens</span>
+          <h2 id="benefits-heading">Klein, aber oho</h2>
+        </div>
+        <div class="grid-3">
+          <div class="info-card reveal">
+            <div class="info-card-icon" aria-hidden="true">
+<svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="nb1" cx="50%" cy="55%" r="50%">
+      <stop offset="0%" stop-color="#d4f0a0"/>
+      <stop offset="100%" stop-color="rgba(112,160,32,.05)"/>
+    </radialGradient>
+  </defs>
+  <circle cx="48" cy="48" r="44" fill="url(#nb1)" stroke="rgba(112,160,32,.28)" stroke-width="1.8"/>
+  <ellipse cx="48" cy="77" rx="15" ry="4" fill="rgba(139,100,40,.20)"/>
+  <line x1="48" y1="76" x2="48" y2="38" stroke="#2D5A27" stroke-width="3" stroke-linecap="round"/>
+  <path d="M48 62 C38 55 25 49 19 38 C28 40 41 50 48 62Z" fill="#4A8A18"/>
+  <path d="M48 62 C38 55 25 49 19 38" stroke="#2D5A27" stroke-width="0.8" opacity=".5" stroke-linecap="round"/>
+  <path d="M48 54 C58 47 71 42 77 31 C68 33 55 43 48 54Z" fill="#78C028"/>
+  <path d="M48 54 C58 47 71 42 77 31" stroke="#3A7010" stroke-width="0.8" opacity=".5" stroke-linecap="round"/>
+  <path d="M48 42 C42 35 37 27 38 18 C43 22 48 31 48 42Z" fill="#3A7010"/>
+  <path d="M48 42 C54 35 59 27 58 18 C53 22 48 31 48 42Z" fill="#9DD84A"/>
+  <path d="M48 25 C47.5 20 47 15 47.5 11 C48.5 14 49 20 48 25Z" fill="#2D5A27"/>
+  <g class="icon-n-d1"><circle cx="17" cy="54" r="7" fill="#F5C518" opacity=".92"/><circle cx="17" cy="54" r="3.5" fill="#fff" opacity=".8"/></g>
+  <g class="icon-n-d2"><circle cx="79" cy="42" r="6.5" fill="#FF8040" opacity=".88"/><circle cx="79" cy="42" r="3" fill="#fff" opacity=".75"/></g>
+  <g class="icon-n-d3"><circle cx="15" cy="70" r="5.5" fill="#60C838" opacity=".85"/><circle cx="15" cy="70" r="2.5" fill="#fff" opacity=".7"/></g>
+  <g class="icon-n-d4"><circle cx="81" cy="63" r="6" fill="#F0C820" opacity=".88"/><circle cx="81" cy="63" r="3" fill="#fff" opacity=".75"/></g>
+  <g class="icon-n-d3"><circle cx="33" cy="14" r="4" fill="#FFA020" opacity=".78"/><circle cx="33" cy="14" r="1.8" fill="#fff" opacity=".65"/></g>
+  <g class="icon-n-d1"><circle cx="63" cy="12" r="3.5" fill="#FFD700" opacity=".75"/><circle cx="63" cy="12" r="1.6" fill="#fff" opacity=".65"/></g>
+</svg>
+            </div>
+            <h3>Nährstoffreich</h3>
+            <p>Studien zeigen, dass Microgreens bis zu 40-mal mehr Vitamine und Nährstoffe enthalten können als ihr ausgewachsenes Pendant.</p>
+          </div>
+          <div class="info-card reveal reveal-delay-1">
+            <div class="info-card-icon" aria-hidden="true">
+<svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="vb1" cx="50%" cy="55%" r="50%">
+      <stop offset="0%" stop-color="rgba(200,168,106,.15)"/>
+      <stop offset="100%" stop-color="rgba(112,160,32,.05)"/>
+    </radialGradient>
+  </defs>
+  <circle cx="48" cy="48" r="44" fill="url(#vb1)" stroke="rgba(112,160,32,.22)" stroke-width="1.8"/>
+  <path d="M20 50 C20 68 76 68 76 50" stroke="#C8903C" stroke-width="2.5" stroke-linecap="round" fill="rgba(200,168,106,.15)"/>
+  <line x1="22" y1="50" x2="74" y2="50" stroke="#C8903C" stroke-width="1.8"/>
+  <path d="M14 58 Q48 66 82 58" stroke="#D0C0A0" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
+  <path d="M34 50 C31 41 27 32 24 23 C28 25 33 35 34 50Z" fill="#4A8A18"/>
+  <path d="M38 50 C37 39 36 28 37 18 C40 21 41 33 38 50Z" fill="#9DD84A"/>
+  <path d="M42 50 C42 38 43 27 44 17 C46 20 46 33 42 50Z" fill="#4A8A18"/>
+  <path d="M46 50 C47 38 48 27 47 16 C50 19 50 33 46 50Z" fill="#78C028"/>
+  <path d="M50 50 C52 39 53 28 52 17 C55 20 55 33 50 50Z" fill="#9DD84A"/>
+  <path d="M54 50 C57 41 61 32 63 22 C59 24 55 35 54 50Z" fill="#5A8A18"/>
+  <path d="M58 50 C63 41 68 32 71 23 C67 25 62 35 58 50Z" fill="#4A8A18"/>
+  <line x1="80" y1="24" x2="80" y2="56" stroke="#B0A090" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="76.5" y1="24" x2="76.5" y2="34" stroke="#B0A090" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="80" y1="24" x2="80" y2="34" stroke="#B0A090" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="83.5" y1="24" x2="83.5" y2="34" stroke="#B0A090" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M76.5 34 Q80 39 83.5 34" stroke="#B0A090" stroke-width="1.8" fill="none"/>
+  <path d="M16 42 C12 33 10 23 13 15 C17 20 19 30 16 42Z" fill="#9DD84A" opacity=".8"/>
+  <line x1="14.5" y1="15.5" x2="16" y2="42" stroke="#4A8A18" stroke-width="1.2" stroke-linecap="round" opacity=".6"/>
+</svg>
+            </div>
+            <h3>Vielseitig</h3>
+            <p>Sie passen zu Salaten, Suppen, Sandwiches und Fine Dining – und machen jedes Gericht optisch und geschmacklich interessanter.</p>
+          </div>
+          <div class="info-card reveal reveal-delay-2">
+            <div class="info-card-icon" aria-hidden="true">
+<svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="gb1" cx="50%" cy="55%" r="50%">
+      <stop offset="0%" stop-color="rgba(157,216,74,.20)"/>
+      <stop offset="100%" stop-color="rgba(112,160,32,.05)"/>
+    </radialGradient>
+  </defs>
+  <circle cx="48" cy="48" r="44" fill="url(#gb1)" stroke="rgba(112,160,32,.25)" stroke-width="1.8"/>
+  <path d="M22 74 Q48 70 74 74" fill="rgba(139,100,40,.22)" stroke="rgba(139,100,40,.38)" stroke-width="1.8" stroke-linecap="round"/>
+  <ellipse cx="48" cy="74" rx="5" ry="3" fill="#A07840" opacity=".55"/>
+  <g class="icon-grow-plant">
+    <path d="M48 73 C48 62 48 48 48 28" stroke="#2D5A27" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M48 62 C40 55 30 50 24 41 C31 43 41 51 48 62Z" fill="#4A8A18"/>
+    <path d="M48 53 C56 46 66 41 71 32 C64 34 54 42 48 53Z" fill="#9DD84A"/>
+    <path d="M48 42 C42 35 36 28 37 20 C42 23 47 31 48 42Z" fill="#3A7010"/>
+    <path d="M48 42 C54 35 60 28 59 20 C54 23 49 31 48 42Z" fill="#78C028"/>
+    <path d="M48 28 C47 22 46 16 47 11 C48 14 49 21 48 28Z" fill="#2D5A27"/>
+  </g>
+  <path class="icon-grow-s1" d="M62 60 L74 56" stroke="#9DD84A" stroke-width="2.5" stroke-linecap="round"/>
+  <path class="icon-grow-s2" d="M63 50 L76 47" stroke="#9DD84A" stroke-width="2.5" stroke-linecap="round"/>
+  <path class="icon-grow-s3" d="M62 40 L73 37" stroke="#78C028" stroke-width="2" stroke-linecap="round"/>
+  <line x1="24" y1="71" x2="24" y2="38" stroke="#9DD84A" stroke-width="1" stroke-dasharray="2 4" opacity=".45"/>
+  <circle cx="24" cy="72" r="3.5" fill="#A07840" opacity=".5"/>
+  <circle cx="24" cy="57" r="3.5" fill="#78C028" opacity=".6"/>
+  <circle cx="24" cy="40" r="3.5" fill="#3A7010" opacity=".75"/>
+</svg>
+            </div>
+            <h3>Schnell wachsend</h3>
+            <p>Vom Samen zur Ernte vergehen nur 7 bis 14 Tage – so sind Microgreens immer frisch und saisonal verfügbar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How to use – Steps -->
+    <section class="section bg-white" aria-labelledby="usage-heading">
+      <div class="container container-sm">
+        <div class="section-header center">
+          <span class="eyebrow">Anwendung</span>
+          <h2 id="usage-heading">So werden Microgreens verwendet</h2>
+        </div>
+        <ol class="steps" role="list">
+          <li class="step reveal">
+            <span class="step-num" aria-hidden="true">1</span>
+            <div class="step-body">
+              <h3>Als Garnitur auf Suppen und Vorspeisen</h3>
+              <p>Einfach kurz vor dem Servieren auf die Suppe oder Vorspeise geben – für frischen Geschmack und attraktive Optik.</p>
+            </div>
+          </li>
+          <li class="step reveal reveal-delay-1">
+            <span class="step-num" aria-hidden="true">2</span>
+            <div class="step-body">
+              <h3>Frisch über Salate und Bowls streuen</h3>
+              <p>Eine Handvoll Microgreens verwandelt einen einfachen Salat oder eine Bowl in ein Nährstoff-Powerhouse.</p>
+            </div>
+          </li>
+          <li class="step reveal reveal-delay-2">
+            <span class="step-num" aria-hidden="true">3</span>
+            <div class="step-body">
+              <h3>Als Topping auf Sandwiches und Wraps</h3>
+              <p>Statt Salat geben Microgreens Sandwiches und Wraps eine besondere Note – knackig, frisch und voller Aroma.</p>
+            </div>
+          </li>
+          <li class="step reveal reveal-delay-3">
+            <span class="step-num" aria-hidden="true">4</span>
+            <div class="step-body">
+              <h3>Als Beilage im Fine Dining</h3>
+              <p>Spitzenköche weltweit setzen auf Microgreens als elegante Garnierung und Geschmacksverstärker.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section bg-cream" aria-labelledby="faq-heading">
+      <div class="container container-sm">
+        <div class="section-header center">
+          <span class="eyebrow">FAQ</span>
+          <h2 id="faq-heading">Häufige Fragen</h2>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
+            Wie lange sind Microgreens haltbar?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" id="faq-1" hidden>
+            <p>Verpackte Microgreens sind bei Kühlung 7–10 Tage haltbar. Lebende Trays bleiben noch länger frisch, da Sie direkt vor Bedarf ernten können.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-1">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
+            Brauche ich eine Mindestbestellmenge?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" id="faq-2" hidden>
+            <p>Für Restaurants und Handel vereinbaren wir gerne regelmäßige Liefermengen. Privatkunden können flexibel bestellen.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-2">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
+            Werden die Greens chemisch behandelt?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" id="faq-3" hidden>
+            <p>Nein. Wir verwenden ausschließlich Bio-Samen und Bioerde – vollständig unbehandelt und ohne Pestizide.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal reveal-delay-3">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
+            Woher kommen Ihre Microgreens?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" id="faq-4" hidden>
+            <p>Alle Microgreens wachsen in unserer Indoor-Farm in Büllingen, hier in der Eifel.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-sm bg-white" aria-labelledby="cta-heading">
+      <div class="container">
+        <div class="section-header center">
+          <h2 id="cta-heading">Bereit, Microgreens auszuprobieren?</h2>
+          <div class="btn-group" style="margin-top: 2rem; justify-content: center;">
+            <a href="kontakt.html" class="btn btn-primary">Jetzt bestellen</a>
+            <a href="mixes.html" class="btn btn-outline">Unsere Mixes</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="images/logo.png" alt="eifel greens" class="footer-logo-img" />
+          <p class="footer-desc">Frisch geerntete Microgreens aus der Eifel – für Restaurants, Handel und Zuhause.</p>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-title">Navigation</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="microgreens.html">Microgreens</a></li>
+            <li><a href="mixes.html">Unsere Mixes</a></li>
+            <li><a href="was-sind-microgreens.html">Was sind Microgreens?</a></li>
+            <li><a href="eifelgemuese.html">Eifelgemüse</a></li>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-title">Kontakt</h3>
+          <address>Eifel Greens<br>Jérôme Messerich<br>Eifelregion, Belgien<br><br><a href="mailto:eifelgreens@outlook.de">eifelgreens@outlook.de</a></address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Eifel Greens · Jérôme Messerich · Eifelregion, Belgien</p>
+        <p><a href="impressum.html" style="color:inherit;text-decoration:none;opacity:.7;">Impressum</a> · <a href="agb.html" style="color:inherit;text-decoration:none;opacity:.7;">AGB</a> · <a href="datenschutz.html" style="color:inherit;text-decoration:none;opacity:.7;">Datenschutz</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
