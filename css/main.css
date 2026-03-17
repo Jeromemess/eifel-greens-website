@@ -1190,6 +1190,8 @@ strong { font-weight: 600; }
   /* ── SPLIT/SEGMENT ── */
   .segment { gap: var(--sp-6); padding: var(--sp-10) 0; }
   .split-visual { aspect-ratio: 16/9; }
+  /* Image always above text on mobile (for non-reversed segments) */
+  .segment:not(.reverse) .segment-visual { order: -1; }
 
   /* ── FOOTER ── */
   .footer-top { grid-template-columns: 1fr; gap: var(--sp-8); }
