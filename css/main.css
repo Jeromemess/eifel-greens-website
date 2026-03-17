@@ -1072,12 +1072,21 @@ strong { font-weight: 600; }
 
 @media (max-width: 768px) {
   :root {
-    --sp-32: 5rem;
-    --sp-24: 3.5rem;
+    --sp-32: 4.5rem;
+    --sp-24: 3rem;
+    --sp-20: 3rem;
     --sp-16: 2.5rem;
+    --sp-12: 2rem;
+    --nav-h: 64px;
   }
 
-  /* Mobile nav */
+  /* Base font size reduction for mobile */
+  html { font-size: 16px; }
+
+  /* Container padding on all mobile sizes */
+  .container, .container-sm { padding: 0 var(--sp-5); }
+
+  /* ── MOBILE NAV ── */
   .nav-burger { display: flex; }
   .nav-links {
     position: fixed;
@@ -1091,37 +1100,117 @@ strong { font-weight: 600; }
     transform: translateX(100%);
     transition: transform var(--t-slow);
     overflow-y: auto;
-    border-top: 1px solid rgba(255,255,255,.08);
+    border-top: 1px solid rgba(255,255,255,.10);
+    z-index: 999;
   }
   .nav-links.open { transform: translateX(0); }
+  /* White text on dark mobile menu background */
   .nav-links a {
     padding: var(--sp-4) var(--sp-5);
     font-size: 1rem;
     border-radius: var(--r-sm);
     min-height: 52px;
+    color: rgba(255,255,255,.82);
   }
-  .nav-cta { margin: var(--sp-4) 0 0; text-align: center; justify-content: center; }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: white;
+    background: rgba(255,255,255,.10);
+  }
+  .nav-cta {
+    margin: var(--sp-4) 0 0 !important;
+    text-align: center;
+    justify-content: center;
+  }
 
-  /* Grids */
+  /* ── TYPOGRAPHY ── */
+  h1 { font-size: clamp(1.9rem, 8vw, 2.6rem); }
+  h2 { font-size: clamp(1.5rem, 6.5vw, 2.1rem); }
+  h3 { font-size: clamp(1.15rem, 5vw, 1.5rem); }
+
+  /* ── HERO ── */
+  .hero { min-height: 100svh; }
+  .hero-content { padding: var(--sp-12) 0 var(--sp-16); }
+  .hero .hero-desc { font-size: 1rem; max-width: 100%; }
+  .hero-plant-wrap { display: none; } /* plant hides behind content on mobile */
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    padding: calc(var(--nav-h) + var(--sp-12)) 0 calc(var(--sp-16) + 65px);
+  }
+  .page-hero h1 { font-size: clamp(1.7rem, 7.5vw, 2.4rem); }
+  .page-hero .lead { font-size: 1rem; }
+
+  /* ── GRIDS ── */
   .grid-3, .grid-2, .trust-grid, .form-row { grid-template-columns: 1fr; }
   .buy-grid { grid-template-columns: 1fr; }
 
-  /* Footer */
-  .footer-top { grid-template-columns: 1fr; gap: var(--sp-8); }
-  .footer-bottom { flex-direction: column; gap: var(--sp-2); text-align: center; }
+  /* ── SECTION HEADER ── */
+  .section-header { margin-bottom: var(--sp-10); }
+  .section-header .lead { font-size: 1rem; }
 
-  /* Misc */
-  .btn-group { flex-direction: column; align-items: center; }
-  .btn-group .btn { max-width: 100%; }
+  /* ── BUTTONS ── */
+  .btn-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .btn-group .btn {
+    max-width: 100%;
+    width: 100%;
+    flex: none;
+    min-width: 0;
+  }
+
+  /* ── CARDS ── */
+  .info-card { padding: var(--sp-6); }
   .form-card { padding: var(--sp-6); }
+  .buy-card { padding: var(--sp-8) var(--sp-6); }
+
+  /* ── NUMBERS ── */
+  .stat-number { font-size: 2.4rem; }
+  .buy-card-num { font-size: 2.8rem; }
+
+  /* ── MIX CARD ── */
+  .mix-band-title { font-size: 1.6rem; }
+  .mix-band-weight { font-size: 1.8rem; }
+  .mix-band { padding: var(--sp-5) var(--sp-6); }
+  .mix-body { padding: var(--sp-5) var(--sp-6); }
+
+  /* ── SPLIT/SEGMENT ── */
+  .segment { gap: var(--sp-6); padding: var(--sp-10) 0; }
+  .split-visual { aspect-ratio: 16/9; }
+
+  /* ── FOOTER ── */
+  .footer-top { grid-template-columns: 1fr; gap: var(--sp-8); }
+  .footer-col ul { grid-template-columns: 1fr 1fr; }
+  .footer-bottom { flex-direction: column; gap: var(--sp-2); text-align: center; }
 }
 
 @media (max-width: 480px) {
-  .container, .container-sm { padding: 0 var(--sp-5); }
-  .mix-band { padding: var(--sp-5) var(--sp-6); }
-  .mix-body { padding: var(--sp-5) var(--sp-6); }
-  .buy-card { padding: var(--sp-8) var(--sp-6); }
-  .info-card { padding: var(--sp-6); }
+  :root {
+    --sp-24: 2.5rem;
+    --sp-20: 2.5rem;
+    --sp-16: 2rem;
+  }
+
+  .container, .container-sm { padding: 0 var(--sp-4); }
+
+  h1 { font-size: clamp(1.65rem, 9vw, 2rem); }
+  h2 { font-size: clamp(1.35rem, 7.5vw, 1.7rem); }
+
+  .form-card { padding: var(--sp-5); }
+  .buy-card { padding: var(--sp-6) var(--sp-5); }
+  .info-card { padding: var(--sp-5); }
+
+  .stat-number { font-size: 2rem; }
+  .buy-card-num { font-size: 2.2rem; }
+  .mix-band-title { font-size: 1.4rem; }
+
+  .footer-col ul { grid-template-columns: 1fr; }
+
+  /* Hero text smaller on very small screens */
+  .hero .hero-desc { font-size: 0.95rem; }
+  .page-hero .lead { font-size: 0.95rem; }
 }
 
 /* ── 21. ACCESSIBILITY ────────────────────────────────────── */
