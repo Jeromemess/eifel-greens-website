@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Microgreens für Gastronomen – Alle Sorten | Eifel Greens</title>
+  <meta name="description" content="Lebende Microgreens im Tray für Restaurants & Gastronomie. 19 Sorten aus der Eifel – frisch, wöchentlich, direkt vom Feld." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* ── Sorten-Grid ── */
+    .sorten-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .sorte-card {
+      background: #fff;
+      border: 1px solid rgba(58,112,16,.12);
+      border-radius: 14px;
+      padding: 1.4rem 1.5rem 1.5rem;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .sorte-card:hover {
+      box-shadow: 0 6px 24px rgba(58,112,16,.13);
+      transform: translateY(-3px);
+    }
+    .sorte-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--dark-green, #1a3d0a);
+      margin: 0 0 .45rem;
+    }
+    .sorte-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-bottom: .7rem;
+    }
+    .sorte-tag {
+      font-size: .72rem;
+      font-weight: 500;
+      padding: .2rem .55rem;
+      border-radius: 20px;
+      background: #eef6e4;
+      color: #3a6e10;
+      letter-spacing: .02em;
+    }
+    .sorte-tag.tag-use {
+      background: #f4f0e8;
+      color: #6b4f1a;
+    }
+    .sorte-desc {
+      font-size: .85rem;
+      color: var(--text-muted, #666);
+      line-height: 1.55;
+      margin: 0;
+    }
+    /* ── Vorteile-Leiste ── */
+    .vorteil-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      justify-content: center;
+      margin: 2.5rem 0 0;
+    }
+    .vorteil-item {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-size: .95rem;
+      font-weight: 500;
+      color: var(--dark-green, #1a3d0a);
+    }
+    .vorteil-icon {
+      width: 36px;
+      height: 36px;
+      background: #eef6e4;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    /* ── Bestellbox ── */
+    .bestell-box {
+      background: var(--dark-green, #1a3d0a);
+      color: #fff;
+      border-radius: 18px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .bestell-box h2 {
+      color: #fff;
+      margin-bottom: .75rem;
+    }
+    .bestell-box p {
+      color: rgba(255,255,255,.82);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+    .bestell-box .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      justify-content: center;
+      margin-bottom: 1.75rem;
+    }
+    .bestell-box .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .55rem 1.1rem;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 8px;
+      color: #fff;
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 500;
+      transition: background .2s;
+    }
+    .bestell-box .contact-link:hover {
+      background: rgba(255,255,255,.22);
+    }
+    .tray-note {
+      background: #f6f9f2;
+      border-left: 3px solid #7ab830;
+      border-radius: 0 8px 8px 0;
+      padding: .8rem 1.1rem;
+      font-size: .88rem;
+      color: #3a5c14;
+      margin-top: 2rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Hauptinhalt springen</a>
+
+  <nav class="nav" id="nav" role="navigation" aria-label="Hauptnavigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="Eifel Greens Startseite">
+        <img src="images/logo.png" alt="eifel greens" class="nav-logo-img" />
+      </a>
+      <button class="nav-burger" id="navBurger" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="microgreens.html">Microgreens</a></li>
+        <li><a href="gastronomie.html" class="active">Gastronomie</a></li>
+        <li><a href="mixes.html">Unsere Mixes</a></li>
+        <li><a href="was-sind-microgreens.html">Was sind Microgreens?</a></li>
+        <li><a href="eifelgemuese.html">Eifelgemüse</a></li>
+        <li><a href="ueber-uns.html">Über uns</a></li>
+        <li><a href="kontakt.html" class="nav-cta">Kontakt</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="page-hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <p class="eyebrow">Für Restaurants &amp; Gastronomie</p>
+        <h1 id="hero-heading">Microgreens für Ihre Profiküche</h1>
+        <p class="lead">Lebend im Tray, frisch vom Feld – 19 Sorten aus der Eifel für Köche, die das Beste auf den Teller bringen wollen.</p>
+        <div class="btn-group" style="margin-top:2rem;">
+          <a href="kontakt.html" class="btn btn-primary">Anfrage stellen</a>
+          <a href="#sorten" class="btn btn-outline">Alle Sorten ansehen</a>
+        </div>
+      </div>
+      <div class="page-hero-plant" aria-hidden="true">
+        <svg viewBox="0 0 300 440" fill="none" xmlns="http://www.w3.org/2000/svg" class="page-hero-svg">
+          <ellipse cx="150" cy="432" rx="140" ry="11" fill="rgba(112,160,32,.16)"/>
+          <path d="M50,434 C50,406 48,374 45,342" stroke="#3A7010" stroke-width="2.6" stroke-linecap="round"/>
+          <ellipse cx="30" cy="330" rx="23" ry="11" fill="#70A020" transform="rotate(-38 30 330)"/>
+          <ellipse cx="62" cy="332" rx="23" ry="11" fill="#5A8A18" transform="rotate(38 62 332)"/>
+          <path d="M108,436 C109,396 107,348 103,286" stroke="#2E6008" stroke-width="3.0" stroke-linecap="round"/>
+          <ellipse cx="82" cy="272" rx="29" ry="13" fill="#80B030" transform="rotate(-35 82 272)"/>
+          <ellipse cx="126" cy="274" rx="29" ry="13" fill="#70A020" transform="rotate(35 126 274)"/>
+          <path d="M170,438 C171,382 169,308 164,208" stroke="#1E5204" stroke-width="4.0" stroke-linecap="round"/>
+          <ellipse cx="138" cy="192" rx="38" ry="17" fill="#9DD84A" transform="rotate(-30 138 192)"/>
+          <ellipse cx="196" cy="195" rx="38" ry="17" fill="#80C030" transform="rotate(30 196 195)"/>
+          <ellipse cx="165" cy="296" rx="22" ry="10" fill="#70A020" transform="rotate(-48 165 296)"/>
+          <ellipse cx="177" cy="291" rx="22" ry="10" fill="#88C038" transform="rotate(44 177 291)"/>
+          <path d="M232,435 C233,392 231,342 227,272" stroke="#305808" stroke-width="3.2" stroke-linecap="round"/>
+          <ellipse cx="205" cy="258" rx="30" ry="14" fill="#90C840" transform="rotate(-33 205 258)"/>
+          <ellipse cx="252" cy="260" rx="30" ry="14" fill="#70A020" transform="rotate(33 252 260)"/>
+          <path d="M282,433 C282,408 281,378 278,346" stroke="#3A6E10" stroke-width="2.4" stroke-linecap="round"/>
+          <ellipse cx="263" cy="334" rx="21" ry="10" fill="#80B830" transform="rotate(-36 263 334)"/>
+          <ellipse cx="297" cy="336" rx="21" ry="10" fill="#70A020" transform="rotate(36 297 336)"/>
+        </svg>
+      </div>
+      <div class="page-hero-wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#fff"/></svg>
+      </div>
+    </section>
+
+    <!-- Vorteile-Leiste -->
+    <section class="section bg-white" style="padding-top:2rem;padding-bottom:2rem;">
+      <div class="container">
+        <div class="vorteil-strip">
+          <div class="vorteil-item">
+            <span class="vorteil-icon">🌱</span>
+            Lebend im Tray – ernten Sie selbst
+          </div>
+          <div class="vorteil-item">
+            <span class="vorteil-icon">📐</span>
+            Formate: 1010 &amp; 1020 Tray
+          </div>
+          <div class="vorteil-item">
+            <span class="vorteil-icon">📅</span>
+            Wöchentliche Lieferung
+          </div>
+          <div class="vorteil-item">
+            <span class="vorteil-icon">🌿</span>
+            Unbehandelt, aus der Eifel
+          </div>
+          <div class="vorteil-item">
+            <span class="vorteil-icon">✉️</span>
+            Preis auf Anfrage
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sorten -->
+    <section class="section" id="sorten" aria-labelledby="sorten-heading">
+      <div class="container">
+        <p class="eyebrow">Unser Sortiment</p>
+        <h2 id="sorten-heading">Alle verfügbaren Sorten</h2>
+        <p style="color:var(--text-muted);max-width:640px;line-height:1.75;">Jede Sorte wird lebend im Substrat-Tray geliefert. Sie ernten direkt in der Küche – maximale Frische, minimaler Abfall.</p>
+
+        <div class="sorten-grid">
+
+          <div class="sorte-card">
+            <p class="sorte-name">Grüne Erbsen Viridios</p>
+            <div class="sorte-tags">
+              <span class="sorte-tag">Süßlich</span>
+              <span class="sorte-tag">Frisch</span>
+              <span class="sorte-tag">Zart</span>
+              <span class="sorte-tag tag-use">Risotto · Fisch · Salate</span>
+            </div>
+            <p class="sorte-desc">Milde Süße und knackige Textur – ideal als elegante Garnitur für helle Saucen und Fischgerichte.</p>
+          </div>
+
+          <div class="sorte-card">
+            <p class="sorte-name">Radieschen Rose</p>
+            <div class="sorte-tags">
+              <span class="sorte-tag">Leicht scharf</span>
+              <span class="sorte-tag">Knackig</span>
+              <span class="sorte-tag tag-use">Sushi · Tatar · Vorspeisen</span>
+            </div>
+            <p class="sorte-desc">Feine Schärfe mit dekorativem Rosa-Stiel – ein Hingucker auf Tatar, Sashimi und kalten Vorspeisen.</p>
+          </div>
+
+          <div class="sorte-card">
+            <p class="sorte-name">Radieschen Daikon</p>
+            <div class="sorte-tags">
+              <span class="sorte-tag">Mild-würzig</span>
+              <span class="sorte-tag">Saftig</span>
+              <span class="sorte-tag tag-use">Asiatisch · Bowl · Ramen</span>
+            </div>
+            <p class="sorte-desc">Klassischer Daikon-Charakter im Miniformat – perfekt für asiatisch inspirierte Gerichte und Bowls.</p>
+          </div>
+
+          <div class="sorte-card">
+            <p class="sorte-name">Radieschen Tango</p>
+            <div class="sorte-tags">
+              <span class="sorte-tag">Pfeffrig</span>
+              <span class="sorte-tag">Intensiv</span>
+              <span class="sorte-tag tag-use">Käse · Carpaccio · Charcuterie</span>
+            </div>
+            <p class="sorte-desc">Kräftige Schärfe mit dunkelviolettem Blatt – setzt auf Käseplatten und Carpaccio einen starken Akzent.</p>
+          </div>
+
+          <div class="sorte-card">
+            <p class="sorte-name">Ruccola</p>
+            <div class="sorte-tags">
+              <span class="sorte-tag">Nussig-scharf</span>
+              <span class="sorte-tag">Klassisch</span>
+              <span class="sorte-tag tag-use">Pizza · Pasta · Salate</span>
+            </div>
+            <p class="sorte-desc">Der Klassiker der Microgreens-Küche – intensiver als großes Ruccola, ideal auf Steinofen-Pizza und Pasta.</p>
+          </div>
+
+          <div class="sorte-card">
+            <p class="sorte-name">Sonnenblumen</p>
+            <div class="sorte-tags">
+              <span class="sorte-tag">Nussig</span>
+              <span class="sorte-tag">Mild</span>
+              <span class="sorte-tag">Cremig</span>
+              <span class="sorte-tag tag-use">Suppen · Sandwiches</span>
+            </div>
+            <p class="sorte-desc">Saftig, buttrig und mild – vielseitig einsetzbar von Suppe bis Sandwich, begeistert auch kritische Gäste.</p>
+          </div>
+
+          <div class="sorte-card">
+            <p class="sorte-name">Brokkoli</p>
+            <div class="sorte-tags">
+              <span class="sorte-tag">Mild</span>
+              <span class="sorte-tag">Leicht erdig</span>
+              <span class="sorte-tag tag-use">Gesundheitsgerichte · Smoothies</span>
+            </div>
+            <p class="sorte-desc">Reich an Sulforaphan, milder Geschmack – Liebling der Health-Cuisine und moderner Gastropubs.</p>
+          </div>
+
+          <div class="sorte-card">
+            <p class="sorte-name">Weißer Senf</p>
+            <div class="sorte-tags">
+              <span class="sorte-tag">Scharf</span>
+              <span class="sorte-tag">Würzig</span>
+              <span class="sorte-tag tag-use">Fleisch · Chutneys · Marinaden</span>
+            </div>
+            <p class="sorte-desc">Klare Senfschärfe ohne Bitterkeit – belebt Fleischgerichte, Vinaigrettes und würzige Saucen.</p>
+          </div>
+
+          <div class="sorte-card">
+            <p class="sorte-name">Roter Senf</p>
+            <div class="sorte-tags">
+              <span class="sorte-tag">Kräftig-scharf</span>
+              <span class="sorte-tag">Leicht bitter</span>
+              <span class="sorte-tag tag-use">Asiatisch · Grillgerichte</span>
+            </div>
+            <p class="sorte-desc">Intensiver als weißer Senf, mit dekorativ rotem Blatt – passt hervorragend zu gegrilltem Fleisch und Wok-Gerichten.</p>
+          </div>
+
+          <div class="sorte-card">
+            <p class="sorte-name">Becks Mix</p>
+            <div class="sorte-tags">
+              <span class="sorte-tag">Komplex</span>
+              <span class="sorte-tag">Herb-würzig</span>
+              <span class="sorte-tag tag-use">Garnierung · Büffet</span>
+            </div>
+            <p class="sorte-desc">Ruccola, Rotkohl, Kohlrabi & Brunnenkresse vereint – farblich und geschmacklich ausgewogene Profi-Garnitur.</p>
+          </div>
+
+          <div class="sorte-card">
+            <p class="sorte-name">Basilikum</p>
+            <div class="sorte-tags">
+              <span class="sorte-tag">Intensiv aromatisch</span>
+              <span class="sorte-tag">Süßlich</span>
+              <span class="sorte-tag tag-use">Italienisch · Desserts · Pesto</span>
+            </div>
+            <p class="sorte-desc">Konzentriertes Basilikum-Aroma auf kleinstem Raum – veredelt Caprese, Desserts und feine Pestos.</p>
+          </div>
+
+          <div class="sorte-card">
+            <p class="sorte-name">Rote Linsen</p>
+            <div class="sorte-tags">
+              <span class="sorte-tag">Mild</span>
+              <span class="sorte-tag">Leicht nussig</span>
+              <span class="sorte-tag tag-use">Suppen · Eintöpfe · Salate</span>
+            </div>
+            <p class="sorte-desc">Zarte Konsistenz, sanftes Aroma – bereichert warme Suppen und rustikale Eintöpfe ohne zu dominieren.</p>
+          </div>
+
+          <div class="sorte-card">
+            <p class="sorte-name">Kapuzinerkresse</p>
+            <div class="sorte-tags">
+              <span class="sorte-tag">Leicht scharf</span>
+              <span class="sorte-tag">Blumig</span>
+              <span class="sorte-tag tag-use">Fine Dining · Salate</span>
+            </div>
+            <p class="sorte-desc">Zarte Schärfe mit floralen Noten – ein Klassiker im Fine Dining, sowohl Blatt als auch Blüte verwendbar.</p>
+          </div>
+
+          <div class="sorte-card">
+            <p class="sorte-name">Red Amaranth</p>
+            <div class="sorte-tags">
+              <span class="sorte-tag">Mild</span>
+              <span class="sorte-tag">Leicht erdig</span>
+              <span class="sorte-tag">Dekorativ</span>
+              <span class="sorte-tag tag-use">Fine Dining · Desserts</span>
+            </div>
+            <p class="sorte-desc">Tiefes Rubinrot, zartes Aroma – der optische Star auf dem Teller, besonders wirkungsvoll auf hellen Saucen.</p>
+          </div>
+
+          <div class="sorte-card">
+            <p class="sorte-name">Borretsch</p>
+            <div class="sorte-tags">
+              <span class="sorte-tag">Gurken-frisch</span>
+              <span class="sorte-tag">Mild</span>
+              <span class="sorte-tag tag-use">Cocktails · Gazpacho · Fisch</span>
+            </div>
+            <p class="sorte-desc">Erfrischend-kühl wie Gurke – hebt Gazpacho, Meeresfrüchte und sommerliche Cocktail-Garnierungen auf ein neues Level.</p>
+          </div>
+
+          <div class="sorte-card">
+            <p class="sorte-name">Koriander</p>
+            <div class="sorte-tags">
+              <span class="sorte-tag">Intensiv</span>
+              <span class="sorte-tag">Zitrusartig</span>
+              <span class="sorte-tag tag-use">Asiatisch · Mexikanisch · Curry</span>
+            </div>
+            <p class="sorte-desc">Konzentriertes Koriander-Aroma, das wenige große Blätter ersetzen kann – für Köche, die präzise dosieren wollen.</p>
+          </div>
+
+          <div class="sorte-card">
+            <p class="sorte-name">Zwiebeln</p>
+            <div class="sorte-tags">
+              <span class="sorte-tag">Mild-zwiebelig</span>
+              <span class="sorte-tag">Frisch</span>
+              <span class="sorte-tag tag-use">Suppen · Eier · Aufschnitt</span>
+            </div>
+            <p class="sorte-desc">Feines Zwiebelaroma ohne die Schärfe der Zwiebel – verleiht Frühstücksgerichten, Eierspeisen und Suppen Tiefe.</p>
+          </div>
+
+          <div class="sorte-card">
+            <p class="sorte-name">Lupinen</p>
+            <div class="sorte-tags">
+              <span class="sorte-tag">Nussig</span>
+              <span class="sorte-tag">Proteinreich</span>
+              <span class="sorte-tag tag-use">Vegane Küche · Salate · Bowl</span>
+            </div>
+            <p class="sorte-desc">Kräftiger, nussiger Charakter mit hohem Proteingehalt – ein Highlight in der pflanzlichen und veganen Gastronomie.</p>
+          </div>
+
+          <div class="sorte-card">
+            <p class="sorte-name">Porree</p>
+            <div class="sorte-tags">
+              <span class="sorte-tag">Mild-lauchig</span>
+              <span class="sorte-tag">Zart</span>
+              <span class="sorte-tag tag-use">Suppen · Quiche · Fleisch</span>
+            </div>
+            <p class="sorte-desc">Dezentes Lauch-Aroma, das große Porree-Stangen elegant ersetzt – ideal für feine Suppen und herzhafte Tartes.</p>
+          </div>
+
+        </div>
+
+        <div class="tray-note">
+          <strong>Tray-Formate:</strong> Wir liefern in <strong>1010-Trays</strong> (Standardgröße) und <strong>1020-Trays</strong> (für größere Küchen und höheren Bedarf). Preise auf Anfrage – gerne auch als regelmäßige Wochenlieferung.
+        </div>
+      </div>
+    </section>
+
+    <!-- Bestellhinweis & CTA -->
+    <section class="section bg-light" aria-labelledby="bestell-heading">
+      <div class="container">
+        <div class="bestell-box">
+          <h2 id="bestell-heading">Jetzt anfragen</h2>
+          <p>Bestellungen bitte mindestens <strong>14 Tage im Voraus</strong> aufgeben. Bei einigen Sorten (z.B. Koriander, Kapuzinerkresse) beträgt der Vorlauf bis zu 25 Tage – wir planen gemeinsam mit Ihnen.</p>
+          <div class="contact-links">
+            <a href="https://wa.me/3204744220700" class="contact-link" target="_blank" rel="noopener">
+              📱 WhatsApp: 0474 422 070
+            </a>
+            <a href="mailto:eifelgreens@outlook.de" class="contact-link">
+              ✉️ eifelgreens@outlook.de
+            </a>
+          </div>
+          <a href="kontakt.html" class="btn btn-primary" style="background:#fff;color:var(--dark-green,#1a3d0a);">Anfrage stellen</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="images/logo.png" alt="eifel greens" class="footer-logo-img" />
+          <p class="footer-desc">Frisch geerntete Microgreens aus der Eifel, für Restaurants, Handel und Zuhause.</p>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-title">Navigation</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="microgreens.html">Microgreens</a></li>
+            <li><a href="gastronomie.html">Gastronomie</a></li>
+            <li><a href="mixes.html">Unsere Mixes</a></li>
+            <li><a href="was-sind-microgreens.html">Was sind Microgreens?</a></li>
+            <li><a href="eifelgemuese.html">Eifelgemüse</a></li>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-title">Kontakt</h3>
+          <address>Eifel Greens<br>Jérôme Messerich<br>Eifelregion, Belgien<br><br><a href="mailto:eifelgreens@outlook.de">eifelgreens@outlook.de</a><br><a href="tel:+3204744 22070">04744 22 070</a></address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Eifel Greens · Jérôme Messerich · Eifelregion, Belgien</p>
+        <p><a href="impressum.html" style="color:inherit;text-decoration:none;opacity:.7;">Impressum</a> · <a href="agb.html" style="color:inherit;text-decoration:none;opacity:.7;">AGB</a> · <a href="datenschutz.html" style="color:inherit;text-decoration:none;opacity:.7;">Datenschutz</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
