@@ -62,30 +62,45 @@
     }
     /* ── Vorteile-Leiste ── */
     .vorteil-strip {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem 2rem;
-      justify-content: center;
-      margin: 2.5rem 0 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0 0;
     }
     .vorteil-item {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: .6rem;
-      font-size: .95rem;
+      text-align: center;
+      gap: .75rem;
+      padding: 1.4rem 1rem 1.3rem;
+      background: #f6f9f2;
+      border: 1px solid rgba(58,112,16,.1);
+      border-radius: 14px;
+      font-size: .88rem;
       font-weight: 500;
       color: var(--dark-green, #1a3d0a);
+      line-height: 1.4;
     }
     .vorteil-icon {
-      width: 36px;
-      height: 36px;
-      background: #eef6e4;
+      width: 48px;
+      height: 48px;
+      background: #fff;
+      border: 1.5px solid rgba(58,112,16,.15);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
       flex-shrink: 0;
+    }
+    .vorteil-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: #3a7010;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
     /* ── Bestellbox ── */
     .bestell-box {
@@ -174,9 +189,9 @@
         <p class="eyebrow">Für Restaurants &amp; Gastronomie</p>
         <h1 id="hero-heading">Microgreens für Ihre Profiküche</h1>
         <p class="lead">Lebend im Tray, frisch vom Feld – 19 Sorten aus der Eifel für Köche, die das Beste auf den Teller bringen wollen.</p>
-        <div class="btn-group" style="margin-top:2rem;">
+        <div class="btn-group" style="margin-top:2rem;justify-content:center;">
           <a href="kontakt.html" class="btn btn-primary">Anfrage stellen</a>
-          <a href="#sorten" class="btn btn-outline">Alle Sorten ansehen</a>
+          <a href="#sorten" class="btn btn-outline" style="border-color:rgba(255,255,255,.7);color:#fff;">Alle Sorten ansehen</a>
         </div>
       </div>
       <div class="page-hero-plant" aria-hidden="true">
@@ -211,23 +226,33 @@
       <div class="container">
         <div class="vorteil-strip">
           <div class="vorteil-item">
-            <span class="vorteil-icon">🌱</span>
+            <span class="vorteil-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8 2 5 6 5 10c0 5 7 12 7 12s7-7 7-12c0-4-3-8-7-8z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            </span>
             Lebend im Tray – ernten Sie selbst
           </div>
           <div class="vorteil-item">
-            <span class="vorteil-icon">📐</span>
+            <span class="vorteil-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </span>
             Formate: 1010 &amp; 1020 Tray
           </div>
           <div class="vorteil-item">
-            <span class="vorteil-icon">📅</span>
+            <span class="vorteil-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            </span>
             Wöchentliche Lieferung
           </div>
           <div class="vorteil-item">
-            <span class="vorteil-icon">🌿</span>
+            <span class="vorteil-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s-8-5.8-8-12a8 8 0 0 1 16 0c0 6.2-8 12-8 12z"/><path d="M12 10v4M12 14l2 2"/></svg>
+            </span>
             Unbehandelt, aus der Eifel
           </div>
           <div class="vorteil-item">
-            <span class="vorteil-icon">✉️</span>
+            <span class="vorteil-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
             Preis auf Anfrage
           </div>
         </div>
@@ -237,9 +262,9 @@
     <!-- Sorten -->
     <section class="section" id="sorten" aria-labelledby="sorten-heading">
       <div class="container">
-        <p class="eyebrow">Unser Sortiment</p>
-        <h2 id="sorten-heading">Alle verfügbaren Sorten</h2>
-        <p style="color:var(--text-muted);max-width:640px;line-height:1.75;">Jede Sorte wird lebend im Substrat-Tray geliefert. Sie ernten direkt in der Küche – maximale Frische, minimaler Abfall.</p>
+        <p class="eyebrow" style="text-align:center;">Unser Sortiment</p>
+        <h2 id="sorten-heading" style="text-align:center;">Alle verfügbaren Sorten</h2>
+        <p style="color:var(--text-muted);max-width:640px;line-height:1.75;text-align:center;margin-left:auto;margin-right:auto;">Jede Sorte wird lebend im Substrat-Tray geliefert. Sie ernten direkt in der Küche – maximale Frische, minimaler Abfall.</p>
 
         <div class="sorten-grid">
 
